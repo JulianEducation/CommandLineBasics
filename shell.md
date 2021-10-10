@@ -69,3 +69,15 @@ sleep 120
 which will sleep for 2 minutes.
 
 We don't have that long to wait, so after a few seconds, hit `^c` to kill the sleep program.
+
+## Command Not Found
+
+If you ask the shell to run a program which doesn't exist, it will show an error by simply printing some output to you.
+
+Run
+
+```sh
+a-program-which-does-not-exist
+```
+
+and observe that sure enough the shell tells us the command is not found.
