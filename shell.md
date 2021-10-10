@@ -28,4 +28,5 @@ primitive -- it's simple text.
 ### Running a program
 
 You should by now be looking at this tutorial inside a shell. If you don't see
-one, follow the link in the README of this repository.
+one, follow the link in the README of [this
+repository](https://github.com/JulianEducation/CommandLineBasics).
