@@ -35,7 +35,39 @@ A simple first program is:
 date
 ```
 
-Try running it now by either typing it into the shell *without* the `$`.
+Try running it now by typing it into the shell *without* the `$` and then hitting enter to execute it.
 Within Google Cloud Shell you can also use the "Copy to Cloud Shell" button.
 
 It should exit quickly, and show you the current date and time.
+
+### Navigating History
+
+Before we go further, it's useful to point out a number of useful keyboard shortcuts.
+
+When you're at the shell prompt, using the up arrow (or down arrow) moves backwards (or forwards) through your shell *history*.
+
+Your history is the set of commands you've executed, often across sessions (meaning not just from your current use of the shell, also previous ones).
+
+Try hitting up arrow now to bring the `date` command back, and execute it a second time.
+
+You can use left and right arrow to navigate within a command you're writing -- so if you make a mistake early in a command, you can fix it without backspacing.
+
+### `Ctrl-c` to interrupt
+
+Finally, before we go much further, you should be aware of the *Ctrl-c* keyboard shortcut.
+*Ctrl-c* in a shell will send what is known as an *interrupt* or *signal* -- but what this means is often that if you have either a command you want to "cancel", or a long-running program is running and you want it to stop running, you can hit *Ctrl-c* to do so.
+We also by convention use the `^` character to represent the `Ctrl` key, so you will see the above shortcut written `^c`, which means to hold down the `Ctrl` key and hit `c`.
+Try it now by typing `date` at the prompt, but instead of hitting enter, hit `Ctrl-c`.
+You should see that your command was not run.
+
+The `sleep` program is a program which does nothing but wait a number of seconds before exiting.
+
+We pass it the number of seconds to wait as an *argument*, which in a shell is done by separating the argument by spaces:
+
+```sh
+sleep 120
+```
+
+which will sleep for 2 minutes.
+
+We don't have that long to wait, so after a few seconds, hit `^c` to kill the sleep program.
