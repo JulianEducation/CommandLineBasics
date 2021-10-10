@@ -35,6 +35,7 @@ A simple first program is:
 date
 ```
 
-Try running it now by either typing it into the shell or using the "Copy to Cloud Shell" button.
+Try running it now by either typing it into the shell *without* the `$`.
+Within Google Cloud Shell you can also use the "Copy to Cloud Shell" button.
 
 It should exit quickly, and show you the current date and time.
