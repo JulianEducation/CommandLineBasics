@@ -81,3 +81,28 @@ a-program-which-does-not-exist
 ```
 
 and observe that sure enough the shell tells us the command is not found.
+
+## bash
+
+You'll notice that in the shell we are using, the line is prefixed by *bash* -- this is the name of the shell we are using!
+There are other shells you may encounter (or choose to use), each of which are slightly different from each other, but `bash` is a very common one.
+
+Note that `bash`, the shell, is itself a program!
+
+We can run `bash` itself by running it the same as we have so far: 
+
+```sh
+bash
+```
+
+Nothing appears to have changed -- but that's because the nested `bash` we have just ran has the same *interface* (appearance and behavior) as the outer shell we started with.
+
+But we can confirm that we're indeed inside a second instance of the shell by using the `exit` command:
+
+```sh
+exit
+```
+
+Running `exit` will exit a shell.
+If you run it once, you'll exit the nested `bash` we ran.
+If you run it a second time, you'll exit the shell Google Cloud Shell opened for you, and thereby close the tutorial.
