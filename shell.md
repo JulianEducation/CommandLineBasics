@@ -25,14 +25,16 @@ If you don't see one, follow the link in the README of [this repository](https:/
 
 Think about what's happening here -- you have your local computer (a laptop, tablet or similar) which is showing you an interface being exposed by a second computer far away from yours.
 
-Let's run our first program. You should see a *prompt* -- by default this will be the `$` character alongside your cursor.
+Let's run our first program. You should see a *prompt* -- by default this will be a line ending in the `$ ` followed by a cursor, where you're able to type.
 
-The character you see has no meaning other than that the shell is waiting for you to give it a command to run.
+The shell is waiting for you to give it a command to run, and will show you output that any program you run emits.
 
-A simple one is:
+A simple first program is:
 
 ```sh
 date
 ```
 
-Try running it now. It should show you the current date and time.
+Try running it now by either typing it into the shell or using the "Copy to Cloud Shell" button.
+
+It should exit quickly, and show you the current date and time.
