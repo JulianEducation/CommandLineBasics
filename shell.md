@@ -1,7 +1,5 @@
 # How do we run command line programs with a shell?
 
-## The Shell
-
 We're all familiar with running graphical programs.
 
 Doing so on most operating systems involves locating the program in a menu, in a common shortcut location like a Desktop or Dock, or in another directory.
@@ -18,7 +16,7 @@ We can run any program via a shell, but we will primarily be learning to run a s
 The reason they are likely to be new is that they themselves are *textual* programs -- they, unlike graphical programs, do not draw nice menus or expect you to heavily use the mouse.
 Their interface is instead more primitive -- it's simple text.
 
-### Running a program
+## Running a program
 
 You should by now be looking at this tutorial alongside a shell -- one running on a Linux computer which we've connected through via your browser.
 If you don't see one, follow the link in the README of [this repository](https://github.com/JulianEducation/CommandLineBasics).
@@ -40,7 +38,7 @@ Within Google Cloud Shell you can also use the "Copy to Cloud Shell" button.
 
 It should exit quickly, and show you the current date and time.
 
-### Navigating History
+## Navigating History
 
 Before we go further, it's useful to point out a number of useful keyboard shortcuts.
 
@@ -52,7 +50,7 @@ Try hitting up arrow now to bring the `date` command back, and execute it a seco
 
 You can use left and right arrow to navigate within a command you're writing -- so if you make a mistake early in a command, you can fix it without backspacing.
 
-### `Ctrl-c` to interrupt
+## `Ctrl-c` to interrupt
 
 Finally, before we go much further, you should be aware of the *Ctrl-c* keyboard shortcut.
 *Ctrl-c* in a shell will send what is known as an *interrupt* or *signal* -- but what this means is often that if you have either a command you want to "cancel", or a long-running program is running and you want it to stop running, you can hit *Ctrl-c* to do so.
