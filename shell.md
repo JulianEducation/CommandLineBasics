@@ -14,7 +14,7 @@ Running a browser is an extremely common graphical example – you're likely si
 Interacting with a graphical program often means clicking buttons, using the mouse heavily and interacting with menus, graphics or icons.
 There are great reasons why this is the primary way most people use a computer -- for the vast majority of "normal use", they are easier to understand and learn.
 
-A shell is another *textual* interface for running programs.
+A shell is another *textual* interface for running programs, often interactively (meaning whilst continuing to give them input and see their output).
 
 We can run any program via a shell, but we will primarily be learning to run a suite of *new* programs you likely have not interacted with before.
 The reason they are likely to be new is that they themselves are *textual* programs -- they, unlike graphical programs, do not draw nice menus or expect you to heavily use the mouse.
@@ -51,6 +51,7 @@ In the rest of the tutorial (and for the rest of this lecture) we'll learn about
 
 A quick word of caution -- never run a command that you don't understand!
 You should be running this tutorial from Cloud Shell, meaning regardless of what you do, your local machine is "safe".
+Even if you remove important operating system files (accidentally or intentionally), as long as you are within Cloud Shell, you are not affecting your local machine.
 Nevertheless, make it a habit not to run a command or program unless you understand what it will do first.
 
 ## Navigating History
