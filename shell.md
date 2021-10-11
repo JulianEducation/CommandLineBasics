@@ -49,9 +49,11 @@ When you're at the shell prompt, using the up arrow (or down arrow) moves backwa
 
 Your history is the set of commands you've executed, often across sessions (meaning not just from your current use of the shell, also previous ones).
 
-Try hitting up arrow now to bring the `date` command back, and execute it a second time.
+Try hitting up arrow now to bring the `date` command back, and execute it a second time, which now should produce a different output.
 
 You can use left and right arrow to navigate within a command you're writing -- so if you make a mistake early in a command, you can fix it without backspacing.
+
+All of the *output* of commands you've executed will remain above your prompt, so if you execute a number of commands, you can use your mouse to copy output from any previous command.
 
 ## `Ctrl-c` to interrupt
 
