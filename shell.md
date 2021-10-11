@@ -421,6 +421,26 @@ rmdir new-directory
 
 will *remove* an empty directory, deleting it.
 
+## `curl` and `cheat.sh`
+
+The `curl` program is a command line way to retrieve websites!
+
+Whilst it's not a full-blown *browser* (though command line browsers indeed exist!), it can be used for retrieving a page or file from a website.
+
+Let's see what it does for an extremely useful website you may not have heard before -- https://cheat.sh/.
+
+This site hosts examples and explanations for command line programs.
+
+If you run:
+
+```sh
+curl cheat.sh/cp
+```
+
+you should see lots of examples about how to use `cp` shown to you.
+
+Try visiting this page in your real browser and comparing.
+
 ## Summary
 
 We've covered a number of commands or programs in brief so far.
@@ -430,6 +450,7 @@ Here's a unified list you might use to continue investigating them and others:
   * `cat`
   * `cd`
   * `cp`
+  * `curl`
   * `date`
   * `echo`
   * `exit`
