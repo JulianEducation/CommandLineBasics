@@ -169,7 +169,7 @@ man echo
 
 and observe you see a page (or multiple pages) of output telling you how to use `echo`. You can hit `q` to exit what you see in `man`.
 
-## Command Line Arguments
+## Types of Command Line Arguments
 
 As we've mentioned, each program may take different options or arguments, and handle them as it wishes.
 
@@ -188,7 +188,25 @@ We can use all of the language features we've learned from the REPL.
 
 ### Short options
 
-A program like `python3` often takes a number of arguments, often optional, which begin with a single hyphen (`-`) followed by a single letter, such as `-c`.
+A program like `python3` often takes a number of arguments which begin with a single hyphen (`-`) followed by a single letter, such as `-c`.
+
+In general these arguments are often optional, and can typically be provided in any order on the command line -- so running:
+
+```sh
+echo -n -e hello
+```
+
+is often equivalent to running
+
+```sh
+echo -e -n hello
+```
+
+and occasionally to:
+
+```sh
+echo hello -e -n
+```
 
 `man python3` tells us:
 
@@ -217,7 +235,8 @@ Again from `man python3` we see `--version` is an argument which shows informati
 python3 --version
 ```
 
-These long options are also generally optional, and often, as is the case with `python3 --version`, there is a single-character shorter version of the argument which is functionally equivalent and shorter to type but harder to remember.
+These long options are also generally optional and can be passed in any order in the command line.
+Often, as is the case with `python3 --version`, there is a single-character shorter version of the argument which is functionally equivalent and shorter to type but harder to remember.
 
 Options like `--version` and `--help` are common across many programs, so you often can try running `someprogram --help` when trying to learn how to use a new program.
 
