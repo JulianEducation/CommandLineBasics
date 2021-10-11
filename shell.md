@@ -41,6 +41,14 @@ When a program exits, you'll see the prompt again.
 
 The `date` program should have exited quickly, and shown you the current date and time.
 
+We've just run our first program via a shell.
+
+In the rest of the tutorial (and for the rest of this lecture) we'll learn about additional programs, and build up the library of functionality we can use at a shell.
+
+A quick word of caution -- never run a command that you don't understand!
+You should be running this tutorial from Cloud Shell, meaning regardless of what you do, your local machine is "safe".
+Nevertheless, make it a habit not to run a command or program unless you understand what it will do first.
+
 ## Navigating History
 
 Before we go further, it's useful to point out a number of useful keyboard shortcuts.
