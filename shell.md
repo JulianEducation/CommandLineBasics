@@ -36,7 +36,10 @@ date
 Try running it now by typing it into the shell *without* the `$` and then hitting enter to execute it.
 Within Google Cloud Shell you can also use the "Copy to Cloud Shell" button.
 
-It should exit quickly, and show you the current date and time.
+As a program runs it may show you output by *printing* it to the interface you see.
+When a program exits, you'll see the prompt again.
+
+The `date` program should have exited quickly, and shown you the current date and time.
 
 ## Navigating History
 
