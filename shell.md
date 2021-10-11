@@ -220,7 +220,7 @@ If we pass the `-c` argument to Python, `man` tells us it takes one *additional*
 Try it by running:
 
 ```sh
-python3 -c 'print("Hello from the Python command line!")'
+python3 -c 'print("Hello from Python")'
 ```
 
 You'll notice that we've placed the last command line output inside single quotes -- the reason we do so is because we wish to pass the entire contents of the quotes as one single argument to `python3`. Remember -- shells split a command line each time they see a space.
