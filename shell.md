@@ -188,7 +188,7 @@ We can use all of the language features we've learned from the REPL.
 
 ### Short options
 
-A program like `python3` often takes a number of arguments which begin with a single hyphen (`-`) followed by a single letter, such as `-c`.
+A program like `echo` or `python3` often takes a number of arguments which begin with a single hyphen (`-`) followed by a single letter, such as `-c`.
 
 In general these arguments are often optional, and can typically be provided in any order on the command line -- so running:
 
@@ -223,7 +223,8 @@ Try it by running:
 python3 -c 'print("Hello from Python")'
 ```
 
-You'll notice that we've placed the last command line output inside single quotes -- the reason we do so is because we wish to pass the entire contents of the quotes as one single argument to `python3`. Remember -- shells split a command line each time they see a space.
+You'll notice that we've placed the last command line output inside single quotes -- the reason we do so is because we wish to pass the entire contents of the quotes as one single argument to `python3`.
+Remember -- shells split a command line each time they see a space.
 If we had not quoted the final argument, the shell would interpret what we were passing itself, and pass a different argument to Python than what we intended.
 
 ### Long options
@@ -379,6 +380,8 @@ ls ../README.md
 ```
 to refer to a file in the parent directory we came from.
 
+Use `cd ..` to `cd` back out of it again.
+
 ### File Contents & Manipulation
 
 So far we've navigated around the directory tree without directly interacting with what is *inside* of a file or directory.
@@ -417,6 +420,38 @@ rmdir new-directory
 ```
 
 will *remove* an empty directory, deleting it.
+
+## Summary
+
+We've covered a number of commands or programs in brief so far.
+Here's a unified list you might use to continue investigating them and others:
+
+  * `bash`
+  * `cat`
+  * `cd`
+  * `cp`
+  * `date`
+  * `echo`
+  * `exit`
+  * `grep`
+  * `head`
+  * `less`
+  * `ls`
+  * `man`
+  * `mkdir`
+  * `mv`
+  * `nano`
+  * `pwd`
+  * `python3`
+  * `rm`
+  * `rmdir`
+  * `seq`
+  * `sleep`
+  * `tail`
+  * `tee`
+  * `top`
+  * `vim`
+  * `wc`
 
 ## Additional Resources
 
