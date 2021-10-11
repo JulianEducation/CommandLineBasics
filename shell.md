@@ -1,4 +1,10 @@
-# How do we run command line programs with a shell?
+# Command Line Interfaces & the Shell
+
+In this tutorial (and lecture) we'll be learning about running command line programs with a *shell*.
+
+Hit the start button to begin.
+
+## What is a shell?
 
 We're all familiar with running graphical programs.
 
@@ -14,7 +20,7 @@ A shell is another *textual* interface for running programs.
 
 We can run any program via a shell, but we will primarily be learning to run a suite of *new* programs you likely have not interacted with before.
 The reason they are likely to be new is that they themselves are *textual* programs -- they, unlike graphical programs, do not draw nice menus or expect you to heavily use the mouse.
-Their interface is instead more primitive -- it's simple text.
+Their interface is instead more primitive -- it's simple text -- but also powerful and flexible.
 
 ## Running a program
 
