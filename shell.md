@@ -158,6 +158,8 @@ If we want to learn more about what the `echo` program does, like perhaps whethe
 
 The `man` program, which stands for *manual* is an interactive help program which can tell us about other programs and their usage notes.
 
+It takes an argument -- the name of a program you wish to learn about.
+
 Run:
 
 ```sh
