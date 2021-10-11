@@ -266,6 +266,158 @@ for more information on what the `python3` program can do.
 Don't be overwhelmed if a lot of what you see is incomprehensible.
 Try to understand the parts which use concepts we've covered in class.
 
+## Files & Directories
+
+We've previously briefly discussed manipulating files and directories with the filesystem or directory hierarchy from Python.
+
+There are a number of programs available to us within the shell for interacting with directories and files on our machine (or here, our remote machine).
+
+We first should note that whenever running programs from a shell, we do so with a *working directory*.
+This working directory represents a directory within which we are running each program.
+Some shell prompts will indicate this directory to us each time they wait for our input.
+A program may somehow change its behavior depending on the working directory we run it within.
+
+As a first example, the `pwd` program is a program whose sole purpose is to *print* the working directory.
+
+Try it:
+
+```sh
+pwd
+```
+
+A more interesting example of a program which changes behavior depending on the working directory is `ls`.
+
+`ls` is a program which *lists* the contents of a directory.
+
+Try running it:
+
+```sh
+ls
+```
+
+We can *change* which directory we are in using `cd`:
+
+```sh
+cd /tmp
+```
+
+See what happens in this new directory if you run `pwd` and `ls`.
+
+Giving `cd` no arguments will default to changing our working directory to what's called the *home directory*.
+On Linux here, home directories look like `/home/yourusername`.
+(On macOS this would be `/Users/YourUsername/`.)
+This directory is the "base" directory for one's own user.
+If you were using a machine on a daily basis, you'd put most of your documents, downloads, files and applications within this directory, as it belongs to your user.
+
+We can change back to our previous working directory above by giving `cd` an argument.
+
+Run `cd` with the output you got in your original `pwd` command to put us back in the directory we started in when beginning this tutorial.
+
+Confirm that you get the same results as before when running `ls`.
+
+### Relative and Absolute Paths
+
+We have briefly discussed that a *path* is a string of characters which represents a location on a computer.
+
+`/tmp` is an example of a path we referenced above, where the root directory `/` contains a subdirectory named `tmp`, which we entered via `cd`.
+
+Paths which begin with `/` are known as *absolute paths* -- they represent a fully described path on your computer.
+
+In contrast are what are known as *relative paths*.
+A relative path is a path *relative* to a working directory.
+
+As an example, the current directory contains a subdirectory called `alice` (which contains a file called `alice.txt`).
+The absolute path to this file will be long and contain many `/`'s.
+But a relative path to this file is simply `alice/alice.txt`, where we leave off all of the path segments above our current working directory.
+
+At a shell, it is much more common to refer to paths below your current working directory (i.e. children) via relative paths.
+
+We can again for instance list the contents of the `alice` directory via:
+
+```sh
+ls alice
+```
+
+where `alice` is again a relative path.
+
+There are three "specially treated" path segments.
+
+`..` within a path refers to the *parent* directory of a path.
+
+`.` refers to the path itself.
+
+Observe for instance that:
+
+```sh
+ls ..
+```
+
+returns the children of the current working directory's parent -- meaning the current working directory is one of the entries in the output!
+
+```sh
+ls .
+```
+
+with the `.` argument will show you indistinguishable output as `ls` alone -- because it will list the current directory's contents.
+
+Finally, `~` within a path *given at a shell* will refer to a home directory.
+
+Run
+
+```sh
+ls ~
+```
+
+and confirm it shows the list of files in your current user's home directory.
+
+You can combine these special path segments with additional path segments.
+
+If you `cd` into the `alice` folder, you'll note you can run
+
+```sh
+ls ../README.md
+```
+to refer to a file in the parent directory we came from.
+
+### File Contents & Manipulation
+
+So far we've navigated around the directory tree without directly interacting with what is *inside* of a file or directory.
+
+There are of course a number of programs which allow us to interact with creating, viewing or deleting files and directories.
+
+From the directory we started in as our working directory, simplest of all is the `cat` command:
+
+```sh
+cat alice/alice.txt
+```
+
+which will simply print the entire contents of the file out to us.
+The name `cat` comes from the word con-*cat*-enate -- and truthfully the program is useful for concatenating multiple files together.
+
+Try:
+
+```sh
+cat alice/alice.txt README.md
+```
+
+and you'll see `cat` has shown both files one after the other.
+But it is most often used simply to show a single file.
+
+Other programs to be aware of (and try out) are `mv`, which moves files between two paths, `cp`, which *copies* files from one path to another, and `rm`, which *deletes* files.
+
+```sh
+mkdir new-directory
+```
+
+will *create* a new empty directory with nothing inside of it.
+The argument given is a path, perhaps relative -- so here, we have created a new subdirectory of the current working directory.
+
+```sh
+rmdir new-directory
+```
+
+will *remove* an empty directory, deleting it.
+
 ## Additional Resources
 
 The [extra learning resources document](https://docs.google.com/document/d/1XwMHRRP3Wwy8hLSGRYKVjqpQ20dMVhGLobRIqYG-goo/) which is linked in the syllabus contains a link to [MIT's "The Missing Semester of Your CS Education"](https://missing.csail.mit.edu/).
