@@ -246,3 +246,12 @@ man python3
 for more information on what the `python3` program can do.
 Don't be overwhelmed if a lot of what you see is incomprehensible.
 Try to understand the parts which use concepts we've covered in class.
+
+## Additional Resources
+
+The [extra learning resources document](https://docs.google.com/document/d/1XwMHRRP3Wwy8hLSGRYKVjqpQ20dMVhGLobRIqYG-goo/) which is linked in the syllabus contains a link to [MIT's "The Missing Semester of Your CS Education"](https://missing.csail.mit.edu/).
+
+You may find its page on [the shell](https://missing.csail.mit.edu/2020/course-shell/) to be helpful for a second perspective.
+It also has a video which treats some of the material we've covered today.
+
+You may also wish to go back through some of the programs we've covered and skim through their `man` pages.
