@@ -168,29 +168,65 @@ man echo
 
 and observe you see a page (or multiple pages) of output telling you how to use `echo`. You can hit `q` to exit what you see in `man`.
 
-## Common Command Line Arguments
+## Command Line Arguments
 
-As we've mentioned, each program may take different options, flags or arguments, and handle them as it wishes.
+As we've mentioned, each program may take different options or arguments, and handle them as it wishes.
 
-There are however a number of common arguments that many programs will respond similarly to, some of which we've just seen in `man echo`.
+In general there are 3 common styles of argument.
+Let's see examples of each by looking at another program, one we're quite familiar with even if we have never used it directly... `python3`!
 
-Try running:
+`python3` is a program which, unsurprisingly, runs Python code.
+
+With no arguments, it opens the REPL:
 
 ```sh
-python3 --help
+python3
 ```
 
-`python3` is a program! We're quite familiar with what this program does, even if we haven't used it directly.
+We can use all of the language features we've learned from the REPL.
 
-The `--version` argument is another commonly supported one -- try:
+### Short options
+
+A program like `python3` often takes a number of arguments, often optional, which begin with a single hyphen (`-`) followed by a single letter, such as `-c`.
+
+`man python3` tells us:
+
+```terminal
+       -c command
+              Specify the command to execute (see next section).  This terminates the option list (following options are passed as arguments to the command).
+```
+
+If we pass the `-c` argument to Python, `man` tells us it takes one *additional* argument after `-c` which represents a piece of Python code to run.
+
+Try it by running:
+
+```sh
+python3 -c 'print("Hello from the Python command line!")'
+```
+
+You'll notice that we've placed the last command line output inside single quotes -- the reason we do so is because we wish to pass the entire contents of the quotes as one single argument to `python3`. Remember -- shells split a command line each time they see a space.
+If we had not quoted the final argument, the shell would interpret what we were passing itself, and pass a different argument to Python than what we intended.
+
+### Long options
+
+A second kind of argument are longer options, which often start with two hyphens, and which generally are named with full words rather than single letters.
+Again from `man python3` we see `--version` is an argument which shows information about the Python version:
 
 ```sh
 python3 --version
 ```
 
-to see which version of Python is present on this Linux computer.
+These long options are also generally optional, and often, as is the case with `python3 --version`, there is a single-character shorter version of the argument which is functionally equivalent and shorter to type but harder to remember.
 
-Finally, there is a Python file in this directory. You can run it via:
+Options like `--version` and `--help` are common across many programs, so you often can try running `someprogram --help` when trying to learn how to use a new program.
+
+### Positional arguments
+
+The third kind of argument is one which we've used above with `echo` and `man` -- namely, a positional argument.
+These can be either required (as is the case with `man`) or optional.
+
+There is a Python file in this directory.
+You can run it via:
 
 ```sh
 python3 hello.py
@@ -200,7 +236,7 @@ where the argument to Python is the name of a file containing Python code to run
 
 When Python is given this one argument, instead of opening a REPL, it executes the file, quitting when it is done.
 
-Have a look at
+Have a further look at
 
 ```sh
 man python3
