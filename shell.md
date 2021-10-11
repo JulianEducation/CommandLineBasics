@@ -211,8 +211,8 @@ echo hello -e -n
 `man python3` tells us:
 
 ```terminal
-       -c command
-              Specify the command to execute (see next section).  This terminates the option list (following options are passed as arguments to the command).
+  -c command
+        Specify the command to execute (see next section).  This terminates the option list (following options are passed as arguments to the command).
 ```
 
 If we pass the `-c` argument to Python, `man` tells us it takes one *additional* argument after `-c` which represents a piece of Python code to run.
