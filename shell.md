@@ -2,8 +2,6 @@
 
 In this tutorial (and lecture) we'll be learning about running command line programs with a *shell*.
 
-Hit the start button to begin.
-
 ## What is a shell?
 
 We're all familiar with running graphical programs.
