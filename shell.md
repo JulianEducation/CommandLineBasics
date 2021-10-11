@@ -436,6 +436,53 @@ rmdir new-directory
 
 will *remove* an empty directory, deleting it.
 
+## Some Interactive / Long-Running Programs
+
+Though some of the programs we've seen so far "stay open" when we run them, such as `python3` with no argument, for the most part programs we've run do a job and then exit.
+
+Here are a few programs which you can try which have a more interactive feel:
+
+### `top`
+
+Your computer (or the Linux one we're using) has many programs running on it at once.
+
+```sh
+top
+```
+
+will show us information about many of these programs, most of which we have not covered.
+
+### `less`
+
+The `cat` program can be used as previously mentioned to spit the contents of a file out.
+
+But what if you want to browse around the file?
+
+That's what `less` is for.
+
+Try running:
+
+```sh
+less alice/alice.txt
+```
+
+and note you can now use keys like the arrow keys to move around the file and read it at your leisure.
+Hit `q` to exit `less`.
+
+### `nano` and `vim`
+
+If you don't want to just read a file but also *edit* it, now you want a command line text *editor*.
+
+`nano` and `vim` are two very widely used and installed text editors.
+
+Try running `nano alice/alice.txt` -- you should see you're able to insert or delete text at will.
+Follow the instructions at the bottom of nano to exit, remembering that `^` means the `Ctrl` key.
+
+`vim` is a text editor that is hugely powerful, and likely different from any other program you've used previously.
+It would take a whole lecture or more to talk about `vim` itself, but for now you can notice that similar to `nano`, if you open our text file with it you can browse around with the arrow keys.
+If however you try to insert some text by typing some letters, `vim` likely won't do what you're expecting.
+Hit `Esc` a few times, then `:q` -- that's the colon key followed by the letter `q`, and then hit enter to quit `vim`.
+
 ## `curl` and `cheat.sh`
 
 The `curl` program is a command line way to retrieve websites!
