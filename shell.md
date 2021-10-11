@@ -126,3 +126,86 @@ exit
 
 If you run it once, you'll exit the nested `bash` we ran, and be back at a similar looking prompt which now is our original "outer" shell.
 If you run it a second time, you'll exit the outer shell Google Cloud Shell opened for you, and thereby close the tutorial.
+
+## Passing Command Line Arguments
+
+A program may take one or more *arguments*.
+
+How it handles these arguments (what it does with them and how they change or affect the program's behavior) depends on each program.
+
+When using a shell, the shell take what you type as your command and *splits* or *parses* your command line.
+It does so to extract which program you want to run, and what arguments you want to pass it.
+Shells split a command line at each block of **space**.
+
+The `echo` program is a simple program which merely echoes back each of its arguments.
+
+Run
+
+```sh
+echo first second third fourth
+```
+
+and observe you see the 4 words you typed echoed back to you.
+
+We have passed `echo` 4 arguments in this example, because there are 4 words separated by space after the name of the program.
+You can pass it more or fewer arguments, its behavior will echo them back to you, however many there are.
+
+This makes `echo` a bit like `print()` from Python.
+
+## `man`
+
+We've just used the `echo` program to echo a line of text.
+
+If we want to learn more about what the `echo` program does, like perhaps whether it takes any additional arguments, we can use... another program!
+
+The `man` program, which stands for *manual* is an interactive help program which can tell us about other programs and their usage notes.
+
+Run:
+
+```sh
+man echo
+```
+
+and observe you see a page (or multiple pages) of output telling you how to use `echo`. You can hit `q` to exit what you see in `man`.
+
+## Common Command Line Arguments
+
+As we've mentioned, each program may take different options, flags or arguments, and handle them as it wishes.
+
+There are however a number of common arguments that many programs will respond similarly to, some of which we've just seen in `man echo`.
+
+Try running:
+
+```sh
+python3 --help
+```
+
+`python3` is a program! We're quite familiar with what this program does, even if we haven't used it directly.
+
+The `--version` argument is another commonly supported one -- try:
+
+```sh
+python3 --version
+```
+
+to see which version of Python is present on this Linux computer.
+
+Finally, there is a Python file in this directory. You can run it via:
+
+```sh
+python3 hello.py
+```
+
+where the argument to Python is the name of a file containing Python code to run.
+
+When Python is given this one argument, instead of opening a REPL, it executes the file, quitting when it is done.
+
+Have a look at
+
+```sh
+man python3
+```
+
+for more information on what the `python3` program can do.
+Don't be overwhelmed if a lot of what you see is incomprehensible.
+Try to understand the parts which use concepts we've covered in class.
