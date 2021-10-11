@@ -517,15 +517,15 @@ For instance, `\w\{10,\}` as a pattern will match 10-or-more word characters, in
 
 There are common shorter ways to write 0 or more or 1 or more.
 
-If we want 1 or more of a character, `+` is equivalent to `\{1,\}` -- so:
+If we want 1 or more of a character, `\+` is equivalent to `\{1,\}` -- so:
 
 ```sh
-grep 'Alice \w+$' alice.txt
+grep 'Alice \w\+$' alice.txt
 ```
 
 will match the word "Alice" followed by a word with at least 1 letter, and then end of line.
 
-Replacing the `+` with a `*` will match 0 or more instances of the character.
+Replacing the `\+` with a `*` will match 0 or more instances of the character.
 
 ### Exercise
 
