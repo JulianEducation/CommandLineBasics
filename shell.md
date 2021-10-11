@@ -436,6 +436,146 @@ rmdir new-directory
 
 will *remove* an empty directory, deleting it.
 
+## `grep` and Regular Expressions
+
+The `grep` program is extremely versatile as a way of *finding* things in files.
+
+Alongside *regular expressions*, which are a generic tool we'll use from Python as well, we can easily write concise expressions that allow us to find substrings of interest from files and directories.
+
+The basic usage of `grep` involves passing it a *pattern* and a file or directory to look through.
+The pattern is written in a small language known as *regular expressions*.
+
+The goal of this small language is to give us terse but powerful ways to represent a pattern of characters we want to find.
+
+`grep` will use this pattern to *filter* which lines of a file match the pattern.
+
+Here's our first example, which you should run from within the `alice` subdirectory:
+
+```sh
+grep Alice alice.txt
+```
+
+This, even though it may not look like it, is our first regular expression.
+
+The string `"Alice"` will match any line which contains that sequence of characters.
+
+So what you should see is all of the lines of the book which contain "Alice" on them.
+All of the other lines of the book have been filtered out and not printed.
+
+If all we could do was match literal text, regular expressions would not be very useful.
+Much of their power comes from using some special syntax which allows us to find more general patterns in text.
+
+### Anchors
+
+The `^` character in a regular expression is an *anchor* -- it matches at the *beginning* of a line.
+
+So the regular expression `^Alice` means "match the word Alice, but only at the beginning of a line".
+Pass this regular expression to grep, and notice that now we get lines that contain "Alice", but only when it is the first word on the line.
+
+The `$` character similarly is an anchor, and matches the *end* of a line -- so `Alice$` will match lines where "Alice" is the *last* word on the line.
+
+### Character Classes
+
+Regular expressions support *character classes* -- groups of characters.
+
+As an example, we may wish to match *any* number within a body of text.
+The general syntax for a character class is similar to that of an escape sequence in Python -- you use the `\` character followed generally by a single letter.
+For numbers, `\d` is the character class which matches "any digit".
+
+For example:
+
+```sh
+grep '\d' alice.txt
+```
+
+will print you all the lines of the file containing a digit somewhere within them.
+
+You can combine this with the above to see if there are lines containing a digit at the beginning or end of them.
+
+Other useful character classes are `\w` which matches any word character (generally letters and numbers) and `\s` which matches any space character (space, tab, and a few others).
+
+The `.` character within a regular expression matches *any* character at all.
+
+So `grep . alice.txt` will find all lines that have 1 or more character on them no matter what it is.
+
+If you ever want to match a period itself, use `\.` to escape it.
+
+### Repetition
+
+We can indicate we want to match *repeated* characters using a few different pieces of additional syntax.
+
+If we want to match the letter "o", we can use simply the regex `o`, but if we want to match 2-or-more repeated o's, we can use:
+
+```sh
+grep 'o\{2,\}' alice.txt
+```
+
+where within the brackets we've said we want at least 2, and at most an infinite number of o's.
+
+The above syntax will apply to anything you tack it onto.
+For instance, `\w\{10,\}` as a pattern will match 10-or-more word characters, in other words, within `grep` will find lines containing a word of 10 or more letters.
+
+There are common shorter ways to write 0 or more or 1 or more.
+
+If we want 1 or more of a character, `+` is equivalent to `\{1,\}` -- so:
+
+```sh
+grep 'Alice \w+$' alice.txt
+```
+
+will match the word "Alice" followed by a word with at least 1 letter, and then end of line.
+
+Replacing the `+` with a `*` will match 0 or more instances of the character.
+
+### Exercise
+
+As a quick exercise, see if you can use repetition to match lines containing the word `Alice` *twice* on the same line.
+
+### Explicit Lists of Characters
+
+We can give an explicit list of characters to match using square brackets (`[]`).
+
+As an example:
+
+```sh
+grep '[abcde]\{5,\}' alice.txt
+```
+
+will match 5 or more repeated uses of any of the characters "a" through "e".
+
+If you run this and find it hard to tell where in the line was matched, you may find it helpful to note the `--color` option to `grep`, which will tell it to highlight where in the line was matched:
+
+```sh
+grep --color=yes '[abcde]\{5,\}' alice.txt
+```
+
+### Case Insensitivity
+
+Another useful option to be aware of is the `-i` argument to `grep`, which makes it case-insensitive.
+
+Compare:
+
+```sh
+grep chapter alice.txt
+```
+
+to
+
+```sh
+grep -i chapter alice.txt
+```
+
+### There's more
+
+We have only scratched the surface on regular expressions.
+
+They can be used to perform lots of menial text matching that would otherwise be tedious to do "manually".
+We'll see how they can be used from Python as well, where the syntax is very similar to what we've used with `grep`.
+
+Regular expressions have a reputation for being easily overcomplicated -- meaning it's easy to write an incomprehensible long regular expression which you will have a hard time diagnosing when it doesn't behave as you expect.
+
+If you use them for what they're meant for however -- short, simple but powerful parsing of substrings, especially interactively -- you have an important tool under your belt.
+
 ## Some Interactive / Long-Running Programs
 
 Though some of the programs we've seen so far "stay open" when we run them, such as `python3` with no argument, for the most part programs we've run do a job and then exit.
