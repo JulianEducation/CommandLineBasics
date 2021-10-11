@@ -406,7 +406,22 @@ cat alice/alice.txt README.md
 and you'll see `cat` has shown both files one after the other.
 But it is most often used simply to show a single file.
 
-Other programs to be aware of (and try out) are `mv`, which moves files between two paths, `cp`, which *copies* files from one path to another, and `rm`, which *deletes* files.
+You'll find programs called `head` and `tail` useful to look at as well -- they'll show you lines from the beginning of a file or end of it respectively.
+Try using them to pull off lines from our book.
+
+Sometimes we want to copy, move or delete a file.
+
+The `cp` program will make a full duplicate of a file:
+
+```sh
+cp alice/alice.txt 'alice/alice in wonderland.txt'
+```
+
+(Remember we need to quote paths which contain spaces in them.)
+
+Use `ls` and `cat` to confirm that we now have two copies of the same file.
+
+Other programs to be aware of (and try out) are `mv`, which moves files to a given second path, and `rm` which *deletes* files.
 
 ```sh
 mkdir new-directory
@@ -469,7 +484,6 @@ Here's a unified list you might use to continue investigating them and others:
   * `seq`
   * `sleep`
   * `tail`
-  * `tee`
   * `top`
   * `vim`
   * `wc`
