@@ -186,46 +186,55 @@ python3
 
 We can use all of the language features we've learned from the REPL.
 
+### Positional arguments
+
+The first kind of argument is one which we've used above with `echo` and `man` -- namely, a positional argument.
+These can be either required (as is the case with `man`) or optional.
+
+There is a Python file in this directory.
+You can run it via:
+
+```sh
+python3 hello.py
+```
+
+where the argument to Python is the name of a file containing Python code to run.
+
+When Python is given this one argument, instead of opening a REPL, it executes the file, quitting when it is done.
+
 ### Short options
 
-A program like `echo` or `python3` often takes a number of arguments which begin with a single hyphen (`-`) followed by a single letter, such as `-c`.
-
-In general these arguments are often optional, and can typically be provided in any order on the command line -- so running:
-
-```sh
-echo -n -e hello
-```
-
-is often equivalent to running
-
-```sh
-echo -e -n hello
-```
-
-and occasionally to:
-
-```sh
-echo hello -e -n
-```
-
-`man python3` tells us:
+If we look at `man python3`, we'll see one of the arguments it takes is one that looks like:
 
 ```terminal
   -c command
         Specify the command to execute (see next section).  This terminates the option list (following options are passed as arguments to the command).
 ```
 
-If we pass the `-c` argument to Python, `man` tells us it takes one *additional* argument after `-c` which represents a piece of Python code to run.
-
-Try it by running:
+What this is telling us is that we can write:
 
 ```sh
 python3 -c 'print("Hello from Python")'
 ```
+where we've given `python3` 2 additional arguments -- one, `-c`, and then an additional argument (which `-c` "consumes") containing a piece of Python code to run *instead* of opening the REPL.
 
 You'll notice that we've placed the last command line output inside single quotes -- the reason we do so is because we wish to pass the entire contents of the quotes as one single argument to `python3`.
 Remember -- shells split a command line each time they see a space.
 If we had not quoted the final argument, the shell would interpret what we were passing itself, and pass a different argument to Python than what we intended.
+
+Arguments that consist of a single hyphen followed by a single letter, such as `-c` in this case are common to many programs.
+
+In general these arguments are often optional, and can typically be provided in any order on the command line -- for `echo`, running:
+
+```sh
+echo -n -e hello
+```
+
+is equivalent to running:
+
+```sh
+echo -e -n hello
+```
 
 ### Long options
 
@@ -240,22 +249,6 @@ These long options are also generally optional and can be passed in any order in
 Often, as is the case with `python3 --version`, there is a single-character shorter version of the argument which is functionally equivalent and shorter to type but harder to remember.
 
 Options like `--version` and `--help` are common across many programs, so you often can try running `someprogram --help` when trying to learn how to use a new program.
-
-### Positional arguments
-
-The third kind of argument is one which we've used above with `echo` and `man` -- namely, a positional argument.
-These can be either required (as is the case with `man`) or optional.
-
-There is a Python file in this directory.
-You can run it via:
-
-```sh
-python3 hello.py
-```
-
-where the argument to Python is the name of a file containing Python code to run.
-
-When Python is given this one argument, instead of opening a REPL, it executes the file, quitting when it is done.
 
 Have a further look at
 
@@ -480,19 +473,19 @@ Regular expressions support *character classes* -- groups of characters.
 
 As an example, we may wish to match *any* number within a body of text.
 The general syntax for a character class is similar to that of an escape sequence in Python -- you use the `\` character followed generally by a single letter.
-For numbers, `\d` is the character class which matches "any digit".
+For example, `\w` is a character class which matches a "word character", i.e. any letter or number.
 
 For example:
 
 ```sh
-grep '\d' alice.txt
+grep '\w\w\w\w\w\w\w\w\w\w' alice.txt
 ```
 
-will print you all the lines of the file containing a digit somewhere within them.
+will print you all the lines of the file containing a word with at least 10 letters in it.
 
-You can combine this with the above to see if there are lines containing a digit at the beginning or end of them.
+You can combine this with the above anchors to see if there are lines containing such a word at the beginning or end of them.
 
-Other useful character classes are `\w` which matches any word character (generally letters and numbers) and `\s` which matches any space character (space, tab, and a few others).
+Other useful character classes are `\s` which matches any space character (space, tab, and a few others), as well as `\W` and `\S` which match the *inverse* of `\w` and `\s`, i.e. any *non*-letter-or-number and *non*-space character.
 
 The `.` character within a regular expression matches *any* character at all.
 
@@ -504,16 +497,18 @@ If you ever want to match a period itself, use `\.` to escape it.
 
 We can indicate we want to match *repeated* characters using a few different pieces of additional syntax.
 
-If we want to match the letter "o", we can use simply the regex `o`, but if we want to match 2-or-more repeated o's, we can use:
+Above we searched for words with 10 characters in them, but did so tediously with repeatedly using the `\w` class.
+We can instead use:
 
 ```sh
-grep 'o\{2,\}' alice.txt
+grep '\w\{10,\}' alice.txt
 ```
 
-where within the brackets we've said we want at least 2, and at most an infinite number of o's.
+where within the brackets we've said we want at least 10, and at most an infinite number of word characters.
 
 The above syntax will apply to anything you tack it onto.
-For instance, `\w\{10,\}` as a pattern will match 10-or-more word characters, in other words, within `grep` will find lines containing a word of 10 or more letters.
+For instance, `o\{2,\}` as a pattern will match 2-or-more repeated o's in a word.
+`man grep` has further details on repetition.
 
 There are common shorter ways to write 0 or more or 1 or more.
 
