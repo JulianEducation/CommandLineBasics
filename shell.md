@@ -74,6 +74,67 @@ It stands for `Unix` -- yet another family of operating systems which have influ
 But the `uname` here is short for `unix name`, and is sort of asking the computer to tell you "what kind of Unix-like operating system are you?".
 Ours sure enough says Linux.
 
+### Command Line Options
+
+Every program (including the 2 we've just learned) may take zero or more extra *arguments*.
+Think of these again like passing arguments to functions or methods in programming languages you've seen, though the syntax is slightly different.
+We'll dive deeper into passing arguments in just a moment, but let's learn about the first *kind* of argument, what are known as "options".
+The `uname` command above told us we were on Linux, but it has more to say about what *version* of Linux we're using, for example.
+
+Run:
+
+```sh
+uname -r
+```
+
+and you should see `uname` tell you what *version* of Linux this computer runs on top of.
+
+Here, I see:
+
+```text
+5.10.133+
+```
+
+telling me this computer is running that specific version of Linux.
+If you head to [the Linux development repository's list of releases](https://github.com/torvalds/linux/tags) you should be able to find that version somewhere in it.
+You may need to scroll back in time, as Linux is released somewhat often.
+
+What we added was three characters, a space, followed by `-r`.
+`-r` is an *option* that `uname` takes, one which tells it we are interested in seeing the "release version", not just that we're running on Linux.
+By passing it, we change the behavior of the program.
+Options in general do this -- they tell the program we wish to change something; but which options exist and how they affect a program *differ* from each program to the next.
+
+If you run:
+
+```sh
+uname --kernel-release
+```
+
+you should see... exactly the same output as `-r`.
+`--kernel-release` is just another longer (but easier to read) name for the same `-r` option.
+
+## OK It's Linux... But What Distribution?
+
+Linux comes in many *distributions* -- combinations of Linux itself along with additional programs, sometimes including a desktop environment (a graphical UI).
+Anyone can create a distribution, so there are many of them, each suiting particular groups of peoples' needs.
+For instance, some people really like always having the newest versions of all of the programs they want to use, so that they can immediately use new functionality that is added to them.
+Others think constantly updating to new versions is painful because programs can change how they work in newer versions, which can disrupt getting work done by constantly having to learn about what's changed and why it's broken something you were used to doing previously.
+There are distributions that cater more or less to each of these styles -- some which update the programs they distribute very rapidly, and some which do so more slowly but are extremely *stable*.
+There are other distributions which cater to people who do creative work, like audio editing.
+They come pre-installed with many programs useful for the particular use case they're designed for.
+
+Which distribution are we using here in Cloud Shell?
+We can answer that with yet another program:
+
+```sh
+lsb_release --all
+```
+
+which should tell you we're running a version of [Debian](https://www.debian.org/), an extremely popular and reliable Linux distribution.
+
+The `lsb_release` program is one whose job it is to tell you information about the specific distribution of Linux being run.
+`--all` is a command line option that it takes, which you can imagine simply shows *all* the information it knows.
+
 ## Navigating History
 
 Before we go further, it's useful to point out a number of useful keyboard shortcuts.
@@ -682,6 +743,7 @@ Here's a unified list you might use to continue investigating them and others:
   * `head`
   * `less`
   * `ls`
+  * `lsb_release`
   * `man`
   * `mkdir`
   * `mv`
