@@ -56,6 +56,24 @@ You should be running this tutorial from Cloud Shell, meaning regardless of what
 Even if you remove important operating system files (accidentally or intentionally), as long as you are within Cloud Shell, you are not affecting your local machine.
 Nevertheless, make it a habit not to run a command or program unless you understand what it will do first.
 
+## Is This Linux?
+
+We've just run a program -- and one claimed above to be running on a Linux computer.
+How can we tell this is a Linux computer?
+Many different operating systems can give us shells.
+Is this one really running Linux?
+
+The answer can be found using another program, one called `uname`:
+
+```sh
+uname
+```
+
+The `u` in `uname` is a "historical artifact".
+It stands for `Unix` -- yet another family of operating systems which have influenced many more modern operating systems, to the point where we refer *collectively* to operating systems like Linux and macOS as "Unix-like operating systems" (for reasons we won't elaborate on much in this tutorial).
+But the `uname` here is short for `unix name`, and is sort of asking the computer to tell you "what kind of Unix-like operating system are you?".
+Ours sure enough says Linux.
+
 ## Navigating History
 
 Before we go further, it's useful to point out a number of useful keyboard shortcuts.
@@ -676,6 +694,7 @@ Here's a unified list you might use to continue investigating them and others:
   * `sleep`
   * `tail`
   * `top`
+  * `uname`
   * `vim`
   * `wc`
 
@@ -693,5 +712,7 @@ On macOS, you can find `Terminal.app` already installed, which gives you a shell
 Programs on macOS are similar but unfortunately not identical to those on Linux (due to macOS actually being a descendant of an operating system called BSD).
 Luckily, macOS also gives you access to `man` pages, so you can refer to those whenever you encounter a difference.
 The general concepts we've discussed should apply essentially unchanged.
+You might immediately consider checking what `uname` tells you on `macOS`.
+(Recall that it gives information about the operating system you're using.)
 
 On Windows, you can have a look at [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install) which you can install to give you access to Linux from your machine.
