@@ -161,7 +161,7 @@ Finally, before we go much further, you should be aware of the *Ctrl-c* keyboard
 *Ctrl-c* in a shell will send what is known as an *interrupt* or *signal* -- but what this means is often that if you have either a command you want to "cancel", or a long-running program is running and you want it to stop running, you can hit *Ctrl-c* to do so.
 We also by convention use the `^` character to represent the `Ctrl` key, so you will see the above shortcut written `^c`, which means to hold down the `Ctrl` key and hit `c`.
 Try it now by typing `date` at the prompt, but instead of hitting enter, hit `Ctrl-c`.
-You should see that your command was not run.
+You should see that your command was *not* run.
 
 The `sleep` program is a program which does nothing but wait a number of seconds before exiting.
 
@@ -214,14 +214,12 @@ exit
 If you run it once, you'll exit the nested `bash` we ran, and be back at a similar looking prompt which now is our original "outer" shell.
 If you run it a second time, you'll exit the outer shell Google Cloud Shell opened for you, and thereby close the tutorial.
 
-## Passing Command Line Arguments
+## More on Command Line Arguments
 
-A program may take one or more *arguments*.
-
+As we briefly mentioned earlier, a program may take one or more *arguments* (including those which we called "options").
 How it handles these arguments (what it does with them and how they change or affect the program's behavior) depends on each program.
 
-When using a shell, the shell take what you type as your command and *splits* or *parses* your command line.
-It does so to extract which program you want to run, and what arguments you want to pass it.
+When using a shell, the shell take what you type as your command and *splits* or *parses* your command line into the program you are running and the arguments you're passing to it.
 Shells split a command line at each block of **space**.
 
 The `echo` program is a simple program which merely echoes back each of its arguments.
@@ -238,6 +236,49 @@ We have passed `echo` 4 arguments in this example, because there are 4 words sep
 You can pass it more or fewer arguments, its behavior will echo them back to you, however many there are.
 
 This makes `echo` a bit like `print()` from Python.
+
+Try putting extra spaces (rather than just one) between some of the words on the command line:
+
+```sh
+echo first            second third   fourth
+```
+
+Notice how they get collapsed into just one space?
+Your shell doesn't care how many spaces you insert, it uses them just to split up arguments.
+By the time the `echo` program runs however, it sees just the 4 words as 4 arguments.
+All of the extra spaces are gone by the time it runs.
+
+How can we preserve those spaces if we *do* want them to be passed to the program we're running?
+Here for instance, what if we want `echo` to print out something with extra spaces?
+We can tell the shell that we are passing a bunch of text as a *single argument, regardless of space* by surrounding it with quotes:
+
+```sh
+echo 'first            second third   fourth'
+```
+
+Here, even though on the command line we have spaces, we're passing `echo` a *single* argument containing everything between the quotes.
+The quotes have told the shell to not split up what's between them into separate arguments.
+Shell splitting can be quite confusing to newcomers (or experts!).
+For example, check what this does:
+
+```sh
+echo first'            sec''ond third   fourth'
+```
+
+where you see we've put the quotes at the end of the first word.
+
+Same exact output right?
+What's happening here is that quotes are like instructions to the shell, and it doesn't care much *where* you use them; all they do is turn off splitting at whitespace, and so you can in fact start them in the *middle* of an argument.
+
+You might find it even more surprising that if you want to pass an argument with multiple *lines* in it, you do so by simply not closing the quote.
+Try typing:
+
+```sh
+echo got: '
+```
+
+and hitting enter.
+You'll see the shell simply waiting for you to type more, and as soon as you type another `'` it should print everything you passed to it, including any extra line breaks.
 
 ## `man`
 
