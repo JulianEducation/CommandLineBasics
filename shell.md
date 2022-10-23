@@ -27,7 +27,8 @@ If you don't see one, follow the link in the README of [this repository](https:/
 
 Think about what's happening here -- you have your local computer (a laptop, tablet or similar) which is showing you an interface being exposed by a second computer far away from yours.
 
-Let's run our first program. You should see a *prompt* -- by default this will be a line ending in the `$ ` followed by a cursor, where you're able to type.
+Let's run our first program.
+You should see a *prompt* -- by default this will be a line ending in the `$ ` followed by a cursor, where you're able to type.
 
 The shell is waiting for you to give it a command to run, and will show you output that any program you run emits.
 
@@ -114,6 +115,7 @@ bash
 ```
 
 Nothing appears to have changed -- but that's because the nested `bash` we have just ran has the same *interface* (appearance and behavior) as the outer shell we started with.
+
 In an informal sense which we'll make more precise later, the "inner" bash we've just run now is the program which is receiving what we type on the keyboard, and which will show us output when we hit enter within it.
 Try running one of the commands we've run previously, which now runs within the inner bash.
 
@@ -178,13 +180,17 @@ Let's see examples of each by looking at another program, one we're quite famili
 
 `python3` is a program which, unsurprisingly, runs Python code.
 
-With no arguments, it opens the REPL:
+With no arguments, it opens a Python interpreter:
 
 ```sh
 python3
 ```
 
-We can use all of the language features we've learned from the REPL.
+At the interpreter you can interactively write any Python code you know.
+
+You can exit the interpreter by typing `exit()` or hitting `^d` (remember that
+`^` is shorthand for the Control key).
+If you do so you should be back at a shell prompt.
 
 ### Positional arguments
 
@@ -289,7 +295,7 @@ Try running it:
 ls
 ```
 
-We can *change* which directory we are in using `cd`:
+We can *change* which directory we are in using `cd` (for "change directory"):
 
 ```sh
 cd /tmp
