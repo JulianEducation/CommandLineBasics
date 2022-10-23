@@ -24,7 +24,7 @@ Their interface is instead more primitive -- it's simple text -- but also powerf
 ## Running a program
 
 You should by now be looking at this tutorial alongside a shell -- one running on a Linux computer which we've connected through via your browser.
-If you don't see one, follow the link in the [README of this repository](README.md).
+If you don't see one, follow the link in the README of [this repository](https://github.com/JulianEducation/CommandLineBasics).
 
 Think about what's happening here -- you have your local computer (a laptop, tablet or similar) which is showing you an interface being exposed by a second computer far away from yours.
 
