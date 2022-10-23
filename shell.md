@@ -35,6 +35,8 @@ With the cursor blinking, if you type the letters `hello` (and nothing else), yo
 If you hit backspace a few times, they disappear, and we've done nothing at all by typing them as long as we delete the letters.
 Again like a text box, if you type `helo`, and realize you missed an `l`, you can hit the left arrow key to move from the `o` backwards, then type `l`, and now hit the right arrow key to move to to the end of the line.
 So the left and right arrow keys work similarly to what you're used to as well -- you can use them to edit what you've typed on the current line.
+You can also scroll up and down with your mouse's scroll wheel (or with 2 fingers on your trackpad).
+We haven't run anything yet, but you may need this later, because as you'll notice, the screen will "scroll" downwards as we run programs, and things run earlier will scroll off the top.
 
 The shell is waiting for you to give it a command to run, and will show you output that any program you run emits.
 Let's run our first program.
