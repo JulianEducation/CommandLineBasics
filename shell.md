@@ -33,10 +33,6 @@ You should see a *prompt* -- by default this will be a line ending in the `$` si
 At its most basic level, the prompt is similar to a text box you've encountered on a web page.
 With the cursor blinking, if you type the letters `hello` (and nothing else), you should see each one appear.
 If you hit backspace a few times, they disappear, and we've done nothing at all by typing them as long as we delete the letters.
-Again like a text box, if you type `helo`, and realize you missed an `l`, you can hit the left arrow key to move from the `o` backwards, then type `l`, and now hit the right arrow key to move to to the end of the line.
-So the left and right arrow keys work similarly to what you're used to as well -- you can use them to edit what you've typed on the current line.
-You can also scroll up and down with your mouse's scroll wheel (or with 2 fingers on your trackpad).
-We haven't run anything yet, but you may need this later, because as you'll notice, the screen will "scroll" downwards as we run programs, and things run earlier will scroll off the top.
 
 The shell is waiting for you to give it a command to run, and will show you output that any program you run emits.
 Let's run our first program.
@@ -50,11 +46,11 @@ Try running it now by typing it into the shell *without* the `$` and then hittin
 Within Google Cloud Shell you can also use the "Copy to Cloud Shell" button.
 
 As a program runs it may show you output by *printing* it to the interface you see.
-When a program exits, you'll see the prompt again.
+When a program exits, you'll see an identical prompt again, as the shell waits for you to tell it yet another thing to run.
 
 The `date` program should have exited quickly, and shown you the current date and time.
 
-We've just run our first program via a shell.
+We've just run our first program via a shell!
 
 In the rest of the tutorial (and for the rest of this lecture) we'll learn about additional programs, and build up the library of functionality we can use at a shell.
 
@@ -146,17 +142,18 @@ The `lsb_release` program is one whose job it is to tell you information about t
 
 ## Navigating History
 
-Before we go further, it's useful to point out a number of useful keyboard shortcuts.
+Before we go further, it's useful to point out a few more keyboard shortcuts which can come in handy.
 
 When you're at the shell prompt, using the up arrow (or down arrow) moves backwards (or forwards) through your shell *history*.
-
 Your history is the set of commands you've executed, often across sessions (meaning not just from your current use of the shell, also previous ones).
 
 Try hitting up arrow now to bring the `date` command back, and execute it a second time, which now should produce a different output.
 
-You can use left and right arrow to navigate within a command you're writing -- so if you make a mistake early in a command, you can fix it without backspacing.
+You can use left and right arrow to navigate within a command you're writing -- so if you make a mistake early in a command, you can fix it without backspacing, and then move back to the end of the line.
 
 All of the *output* of commands you've executed will remain above your prompt, so if you execute a number of commands, you can use your mouse to copy output from any previous command.
+If there's been enough output from previous commands, you'll see the screen begin to *scroll*, so that you still see a prompt at the bottom, but commands and output from earlier are no longer visible.
+In Google Cloud Shell, you can scroll up and down the previous *output* with your mouse's scroll wheel (or with 2 fingers on your trackpad) if you want to see or copy something you know was printed out earlier that isn't visible on the screen where your current prompt is.
 
 ## `Ctrl-c` to interrupt
 
