@@ -108,7 +108,7 @@ There are other shells you may encounter (or choose to use), each of which are s
 
 Note that `bash`, the shell, is itself a program!
 
-We can run `bash` itself by typing its name at the prompt, just as we have so far: 
+We can run `bash` itself by typing its name at the prompt, just as we have so far:
 
 ```sh
 bash
@@ -222,6 +222,7 @@ What this is telling us is that we can write:
 ```sh
 python3 -c 'print("Hello from Python")'
 ```
+
 where we've given `python3` 2 additional arguments -- one, `-c`, and then an additional argument (which `-c` "consumes") containing a piece of Python code to run *instead* of opening the REPL.
 
 You'll notice that we've placed the last command line output inside single quotes -- the reason we do so is because we wish to pass the entire contents of the quotes as one single argument to `python3`.
@@ -377,6 +378,7 @@ If you `cd` into the `alice` folder, you'll note you can run
 ```sh
 ls ../README.md
 ```
+
 to refer to a file in the parent directory we came from.
 
 Use `cd ..` to `cd` back out of it again.
@@ -630,7 +632,7 @@ The `curl` program is a command line way to retrieve websites!
 
 Whilst it's not a full-blown *browser* (though command line browsers indeed exist!), it can be used for retrieving a page or file from a website.
 
-Let's see what it does for an extremely useful website you may not have heard before -- https://cheat.sh/.
+Let's see what it does for an extremely useful website you may not have heard before -- <https://cheat.sh/>.
 
 This site hosts examples and explanations for command line programs.
 
