@@ -28,12 +28,17 @@ If you don't see one, follow the link in the README of [this repository](https:/
 
 Think about what's happening here -- you have your local computer (a laptop, tablet or similar) which is showing you an interface being exposed by a second computer far away from yours.
 
-Let's run our first program.
-You should see a *prompt* -- by default this will be a line ending in the `$ ` followed by a cursor, where you're able to type.
+You should see a *prompt* -- by default this will be a line ending in the `$` sign, and followed by a cursor shaped like a blinking square box (or sometimes a vertical line) where you're able to type.
+
+At its most basic level, the prompt is similar to a text box you've encountered on a web page.
+With the cursor blinking, if you type the letters `hello` (and nothing else), you should see each one appear.
+If you hit backspace a few times, they disappear, and we've done nothing at all by typing them as long as we delete the letters.
+Again like a text box, if you type `helo`, and realize you missed an `l`, you can hit the left arrow key to move from the `o` backwards, then type `l`, and now hit the right arrow key to move to to the end of the line.
+So the left and right arrow keys work similarly to what you're used to as well -- you can use them to edit what you've typed on the current line.
 
 The shell is waiting for you to give it a command to run, and will show you output that any program you run emits.
-
-A simple first program is:
+Let's run our first program.
+A simple one to start with is:
 
 ```sh
 date
