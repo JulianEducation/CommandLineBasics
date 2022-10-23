@@ -565,6 +565,96 @@ rmdir new-directory
 
 will *remove* an empty directory, deleting it.
 
+## Package Managers
+
+Thus far, we've made use of a number of programs which it seems are "built in" or at least pre-installed for us on the computers we're using in Cloud Shell.
+
+What if we want to install and use other programs?
+
+On the Linux operating system (and on nearly all Linux distributions), you'll encounter programs called *package managers*.
+A package manager is itself a program whose job it is to *install* or otherwise manage packages on the computer.
+A *package* is often a program, though it can be something more granular than a program, like perhaps a programming library meant to be used within a larger program.
+So package managers are used to install, uninstall or query for programs and tools we may want to have available.
+
+Recall that we're using a Debian machine (or confirm it for yourself again via `lsb_release -i`).
+The Debian distribution gives you a package manager called `apt`, which stands for *Advanced Package Tool*.
+
+Let's use it to install something we don't have installed already, a program called `ripgrep` which we'll talk about in the next section.
+
+`apt` takes some arguments.
+In particular, it takes a *subcommand* argument which describes what you want to do.
+The subcommand `install` is used for installing packages, and takes additional arguments which are the names of the packages you want to install.
+
+Run:
+
+```sh
+apt install ripgrep
+```
+
+which should attempt to install the `ripgrep` package, except... it fails!
+It says:
+
+```text
+E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)
+E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?
+```
+
+Sounds scary, what does that mean?
+There's two bits that you need to know to decipher the message, but before we get there, let's take a small detour before finishing the installation.
+
+### Users
+
+Every Linux computer supports one or more *users* of the computer.
+You've seen this on Windows or macOS most likely -- you can have different accounts for perhaps you and a family member.
+In general, users can see their own files and not files belonging to others, unless they're shared files.
+The Linux computer we're using in Cloud Shell has a user automatically created for you.
+You can see what this user is called by running the `whoami` program:
+
+```sh
+whoami
+````
+
+I see my UNI:
+
+```text
+jb4661
+```
+
+which you likely have noticed has been written in the prompt all along.
+
+But there's other users automatically present on the computer, and in particular there's a special "user" known as `root`.
+The root user is the most "powerful" user account on the computer, having access to all files, and also able to touch sensitive files belonging to Linux itself.
+Users other than `root` cannot generally touch these files, and potentially cannot even read them for security reasons (of the computer itself).
+If we *do* need or want to touch these files, we must have root (administrative) access to do so, and in this Cloud Shell environment, we indeed do, but we must explicitly say we want to *become* the root user and assume all of the elevated level of responsibility and care that entails.
+The way to do so is using a program called `sudo` (which stands for "superuser do" or "substitute user, do") -- it allows us to *do* something as the superuser `root`.
+
+Try running:
+
+```sh
+sudo whoami
+```
+
+to run `whoami` as the superuser.
+Powerful, no?
+On your own computer, running something with `sudo` to become `root` would often be protected by a password.
+
+Looking back at the error message we got from `apt`, we see it mentioned something about permissions and needing to be root.
+It was telling us we needed to be `root` in order to install things with `apt`.
+Let's do so.
+Run the same command we ran before, but prefix it with `sudo` (recall you can do this with the arrow keys if you'd like):
+
+```sh
+sudo apt install ripgrep
+```
+
+You should now see things succeed!
+We've installed `ripgrep`.
+
+We'll now look at how to use it, but it first bears stressing: using `sudo` is a responsibility, and needs to be done with care.
+You can do damage to a machine by running commands with `sudo` (e.g. by removing protected operating system files).
+We've already stressed not to run commands you don't understand -- this applies doubly to commands under `sudo`!
+Don't simply add `sudo` to commands anytime you are told you don't have sufficient permissions; make sure you indeed intend to do exactly what you're doing first!
+
 ## `grep` and Regular Expressions
 
 The `grep` program is extremely versatile as a way of *finding* things in files.
@@ -779,6 +869,7 @@ Try visiting this page in your real browser and comparing.
 We've covered a number of commands or programs in brief so far.
 Here's a unified list you might use to continue investigating them and others:
 
+  * `apt`
   * `bash`
   * `cat`
   * `cd`
@@ -802,11 +893,13 @@ Here's a unified list you might use to continue investigating them and others:
   * `rmdir`
   * `seq`
   * `sleep`
+  * `sudo`
   * `tail`
   * `top`
   * `uname`
   * `vim`
   * `wc`
+  * `whoami`
 
 ## Additional Resources
 
