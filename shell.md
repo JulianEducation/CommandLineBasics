@@ -672,9 +672,17 @@ Here's a unified list you might use to continue investigating them and others:
 
 ## Additional Resources
 
-The [extra learning resources document](https://docs.google.com/document/d/1XwMHRRP3Wwy8hLSGRYKVjqpQ20dMVhGLobRIqYG-goo/) which is linked in the syllabus contains a link to [MIT's "The Missing Semester of Your CS Education"](https://missing.csail.mit.edu/).
-
-You may find its page on [the shell](https://missing.csail.mit.edu/2020/course-shell/) to be helpful for a second perspective.
+There's a nice "course" that was offered by MIT called ["The Missing Semester of Your CS Education"](https://missing.csail.mit.edu/).
+Even if you aren't a Computer Science student you may find its page on [the shell](https://missing.csail.mit.edu/2020/course-shell/) to be helpful for a second perspective, and may find other lectures from it interesting to expand your knowledge on computing in general.
 It also has a video which treats some of the material we've covered today.
 
 You may also wish to go back through some of the programs we've covered and skim through their `man` pages.
+
+If you've gotten this far, you may also now be comfortable enough to try out a shell on your own machine.
+
+On macOS, you can find `Terminal.app` already installed, which gives you a shell on your computer.
+Programs on macOS are similar but unfortunately not identical to those on Linux (due to macOS actually being a descendant of an operating system called BSD).
+Luckily, macOS also gives you access to `man` pages, so you can refer to those whenever you encounter a difference.
+The general concepts we've discussed should apply essentially unchanged.
+
+On Windows, you can have a look at [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install) which you can install to give you access to Linux from your machine.
