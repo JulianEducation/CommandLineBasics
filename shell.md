@@ -17,9 +17,9 @@ There are great reasons why this is the primary way most people use a computer -
 A shell is another *textual* interface for running programs, often interactively (meaning whilst continuing to give them input and see their output).
 You can think of it almost like interactively executing a programming language you're familiar with -- like Python -- but where instead of calling functions or objects from the programming language, the "units of code" that you use are going to be entire programs, each with a job.
 
-We can run any program via a shell, but we will primarily be learning to run a suite of *new* programs you likely have not interacted with before.
+We can run any program -- including any you already use -- via a shell, but we will primarily be learning to run a suite of *new* programs you likely have not interacted with before.
 The reason they are likely to be new is that they themselves are *textual* programs -- they, unlike graphical programs, do not draw nice menus or expect you to heavily use the mouse.
-Their interface is instead more primitive -- it's simple text -- but also powerful and flexible.
+Their interface is instead more primitive -- it's simple text -- but also powerful and flexible, and specifically meant to be used here in this kind of environment.
 
 ## Running a program
 
