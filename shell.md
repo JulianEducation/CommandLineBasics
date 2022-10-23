@@ -351,14 +351,15 @@ Try to understand the parts which use concepts we've covered in class.
 
 ## Files & Directories
 
-We've previously briefly discussed manipulating files and directories with the filesystem or directory hierarchy from Python.
+You likely have had some previous exposure to interacting with directories or files on your computer from a programming language like Python (if you haven't don't worry, keep reading).
 
 There are a number of programs available to us within the shell for interacting with directories and files on our machine (or here, our remote machine).
 
 We first should note that whenever running programs from a shell, we do so with a *working directory*.
 This working directory represents a directory within which we are running each program.
-Some shell prompts will indicate this directory to us each time they wait for our input.
-A program may somehow change its behavior depending on the working directory we run it within.
+It might be a "project directory" if it contains files related to a single project or piece of work.
+Some shell prompts will indicate this directory to us each time they wait for our input, so you've already seen the working directory we've been inside to the left of the `$` character in our prompt.
+A program may sometimes change its behavior depending on the working directory we run it from.
 
 As a first example, the `pwd` program is a program whose sole purpose is to *print* the working directory.
 
