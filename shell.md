@@ -282,13 +282,15 @@ You'll see the shell simply waiting for you to type more, and as soon as you typ
 
 ## `man`
 
-We've just used the `echo` program to echo a line of text.
+We've already used a small number of programs, like the `echo` program to echo a line of text.
 
-If we want to learn more about what the `echo` program does, like perhaps whether it takes any additional arguments, we can use... another program!
+Wouldn't it be nice if there was an instruction manual for programs that told us how to use them?
+There is one of course, and it's another program, one called `man` (for "manual").
 
-The `man` program, which stands for *manual* is an interactive help program which can tell us about other programs and their usage notes.
+`man` is an interactive help program which can tell us about other programs and their usage notes.
 
 It takes an argument -- the name of a program you wish to learn about.
+If we want to learn more about what the `echo` program does, like perhaps whether it takes any additional arguments, type:
 
 Run:
 
@@ -298,7 +300,7 @@ man echo
 
 and observe you see a page (or multiple pages) of output telling you how to use `echo`. You can hit `q` to exit what you see in `man`.
 
-## Types of Command Line Arguments
+## Even More About Command Line Arguments
 
 As we've mentioned, each program may take different options or arguments, and handle them as it wishes.
 
@@ -321,8 +323,8 @@ If you do so you should be back at a shell prompt.
 
 ### Positional arguments
 
-The first kind of argument is one which we've used above with `echo` and `man` -- namely, a positional argument.
-These can be either required (as is the case with `man`) or optional.
+We've used positional arguments above with `echo` and `man`.
+They don't begin with dashes (`-`), and can be either required (as is the case with `man`) or optional.
 
 There is a Python file in this directory.
 You can run it via:
@@ -352,11 +354,9 @@ python3 -c 'print("Hello from Python")'
 
 where we've given `python3` 2 additional arguments -- one, `-c`, and then an additional argument (which `-c` "consumes") containing a piece of Python code to run *instead* of opening the REPL.
 
-You'll notice that we've placed the last command line output inside single quotes -- the reason we do so is because we wish to pass the entire contents of the quotes as one single argument to `python3`.
-Remember -- shells split a command line each time they see a space.
-If we had not quoted the final argument, the shell would interpret what we were passing itself, and pass a different argument to Python than what we intended.
+You'll notice that we've placed the last command line output inside single quotes -- remember, the reason we do so is because we wish to pass the entire contents of the quotes as one single argument to `python3`.
 
-Arguments that consist of a single hyphen followed by a single letter, such as `-c` in this case are common to many programs.
+Arguments that consist of a single hyphen followed by a single letter, such as `-c` in this case are common to many programs, like `uname -r` which we saw at the outset.
 
 In general these arguments are often optional, and can typically be provided in any order on the command line -- for `echo`, running:
 
@@ -392,7 +392,7 @@ man python3
 
 for more information on what the `python3` program can do.
 Don't be overwhelmed if a lot of what you see is incomprehensible.
-Try to understand the parts which use concepts we've covered in class.
+Try to understand the parts which use concepts you're already familiar with.
 
 ## Files & Directories
 
