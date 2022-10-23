@@ -848,7 +848,7 @@ Hit `Esc` a few times, then `:q` -- that's the colon key followed by the letter 
 
 The `curl` program is a command line way to retrieve websites!
 
-Whilst it's not a full-blown *browser* (though command line browsers indeed exist!), it can be used for retrieving a page or file from a website.
+Whilst it's not a full-blown *browser*, it can be used for retrieving a page or file from a website.
 
 Let's see what it does for an extremely useful website you may not have heard before -- <https://cheat.sh/>.
 
@@ -863,6 +863,13 @@ curl cheat.sh/cp
 you should see lots of examples about how to use `cp` shown to you.
 
 Try visiting this page in your real browser and comparing.
+
+### Silly? Or Interesting: `w3m`
+
+The `w3m` program *is* a full-blown browser.
+Or at least an example of one simple enough to run within your shell.
+
+Install it (with [a package manager](#package-managers) as shown earlier -- its package is called simply `w3m`) and have a look at its `man` page to see how to use it.
 
 ## Summary
 
@@ -898,6 +905,7 @@ Here's a unified list you might use to continue investigating them and others:
   * `top`
   * `uname`
   * `vim`
+  * `w3m`
   * `wc`
   * `whoami`
 
