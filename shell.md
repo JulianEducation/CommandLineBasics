@@ -99,10 +99,12 @@ telling me this computer is running that specific version of Linux.
 If you head to [the Linux development repository's list of releases](https://github.com/torvalds/linux/tags) you should be able to find that version somewhere in it.
 You may need to scroll back in time, as Linux is released somewhat often.
 
-What we added was three characters, a space, followed by `-r`.
+What we added was three characters, a space character, followed by the two characters `-r`.
 `-r` is an *option* that `uname` takes, one which tells it we are interested in seeing the "release version", not just that we're running on Linux.
-By passing it, we change the behavior of the program.
-Options in general do this -- they tell the program we wish to change something; but which options exist and how they affect a program *differ* from each program to the next.
+Options are passed by simply adding some space and then typing the option on the command line.
+Passing the `-r` option changed what `uname` showed us.
+Options in general do this -- they tell the program we want it to behave differently from its default behavior.
+Which options exist and how they affect a program *differ* from each program to the next.
 
 If you run:
 
