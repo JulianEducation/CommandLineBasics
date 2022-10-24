@@ -857,12 +857,25 @@ you should see lots of examples about how to use `cp` shown to you.
 
 Try visiting this page in your real browser and comparing.
 
-### Silly? Or Interesting: `w3m`
+### Silly? Or Interesting? `w3m`
 
 The `w3m` program *is* a full-blown browser.
 Or at least an example of one simple enough to run within your shell.
 
 Install it (with [a package manager](#package-managers) as shown earlier -- its package is called simply `w3m`) and have a look at its `man` page to see how to use it.
+
+### Definitely Not Silly: youtube-dl
+
+If you've ever had a video you wish you could save offline for a long flight or commute, a terminal program that certainly will be useful to you is `youtube-dl`, which makes doing so trivial.
+
+Fumble for a moment with trying to figure out how to do so with the YouTube website, before simply trying:
+
+```sh
+sudo apt install youtube-dl
+youtube-dl '<any video>'
+```
+
+and seeing how easy that was to do.
 
 ## Summary
 
@@ -901,6 +914,7 @@ Here's a unified list you might use to continue investigating them and others:
   * `w3m`
   * `wc`
   * `whoami`
+  * `youtube-dl`
 
 ## Things We Didn't Cover
 
