@@ -909,6 +909,27 @@ Here's a unified list you might use to continue investigating them and others:
   * `wc`
   * `whoami`
 
+## Things We Didn't Cover
+
+We covered a lot about shells in this tutorial, but we really have only scratched the surface.
+
+Here's a list of topics we *didn't* cover, which you should be able to use to find further tutorials or resources:
+
+  * The `&&` and `||` operators, which you can use to *combine* multiple command lines together.
+    Check out `man bash` for details on how to use them.
+  * Environment variables. `man bash` and `man env` may be good starts for this one.
+    You'll also want to learn about double quotes (`""`) and how they differ from single quotes in a shell.
+  * `stdin`, `stdout` and `stderr` of any program you run, and how they relate to the `>` and `2>` redirections in a shell.
+    `man bash` is again a good place to start for the latter.
+  * glob patterns, which you can use, sort of like "faster" or more ergonomic regular expressions (though with much less functionality).
+    They're extremely widely used at a shell for filtering files or directories.
+    `man bash` is again a first place to look for these
+  * Job control, for running multiple programs at the same "time" in a single shell.
+    Look at `fg` and `bg` again in `man bash`.
+  * Shell pipes and pipelines with `|`, which you can use to *send and receive* things from one program to another.
+    This is itself an amazing and deep topic which touches on composing all of the programs we've learned about with each other.
+    `man bash` yet again will teach you the basic syntax, but you'll find countless tutorials on how to assemble shell pipelines.
+
 ## Additional Resources
 
 There's a nice "course" that was offered by MIT called ["The Missing Semester of Your CS Education"](https://missing.csail.mit.edu/).
