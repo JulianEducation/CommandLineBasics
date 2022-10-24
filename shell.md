@@ -444,6 +444,34 @@ Run `cd` with the output you got in your original `pwd` command to put us back i
 
 Confirm that you get the same results as before when running `ls`.
 
+### Another Typing Tip
+
+Nearly without question, the most useful key to be aware of at a shell is the tab key.
+Hitting it begins what is called tab *completion*.
+In short -- your shell magically finishing off what you mean to type.
+
+It can't do this always of course, but it does so in at least 2 notable situations.
+The first is when you're typing the names of existing files or directories.
+
+Try typing:
+
+```sh
+cd /t
+```
+
+but rather than hitting enter or finishing to type the path, hit tab, and notice that your shell automatically finishes what you were typing to `/tmp`!
+If you're typing a long path, like `/foo/bar/baz/quux`, you can repeatedly hit tab to complete each individual segment, such as by typing `/f<tab>/bar/b<tab>/quu<tab>` (where `<tab>` is meant to indicate hitting the tab key).
+
+You can also complete the names of programs themselves.
+
+Type:
+
+```sh
+lsb_
+```
+
+and hit tab, and notice that your shell completes the name of the program to `lsb_release`!
+
 ### Relative and Absolute Paths
 
 We have briefly discussed that a *path* is a string of characters which represents a location on a computer.
