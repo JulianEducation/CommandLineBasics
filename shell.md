@@ -472,6 +472,8 @@ lsb_
 
 and hit tab, and notice that your shell completes the name of the program to `lsb_release`!
 
+We'll keep discussing paths, but tab completion should be something quite useful to you throughout the rest of the tutorial.
+
 ### Relative and Absolute Paths
 
 We have briefly discussed that a *path* is a string of characters which represents a location on a computer.
