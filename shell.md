@@ -34,9 +34,9 @@ At its most basic level, the prompt is similar to a text box you've encountered 
 With the cursor blinking, if you type the letters `hello` (and nothing else), you should see each one appear.
 If you hit backspace a few times, they disappear, and we've done nothing at all by typing them as long as we delete the letters.
 
-The shell is waiting for you to give it a command to run, and will show you output that any program you run emits.
+The shell is waiting for you to give it a command to run, and will show you output that anything you run emits.
 Let's run our first program.
-A simple one to start with is:
+A simple program to start with is:
 
 ```sh
 date
@@ -46,15 +46,24 @@ Try running it now by typing it into the shell *without* the `$` and then hittin
 Within Google Cloud Shell you can also use the "Copy to Cloud Shell" button.
 
 As a program runs it may show you output by *printing* it to the interface you see.
-When a program exits, you'll see an identical prompt again, as the shell waits for you to tell it yet another thing to run.
+When a program exits, you'll see an identical prompt again.
+Your shell is waiting anew for you to tell it the next thing you want to run.
 
 The `date` program should have exited quickly, and shown you the current date and time.
 
-We've just run our first program via a shell!
+We've just run our first program via a shell.
 
 In the rest of the tutorial (and for the rest of this lecture) we'll learn about additional programs, and build up the library of functionality we can use at a shell.
 
-A quick word of caution -- never run a command that you don't understand!
+Before going any further, you may want to try re-running our date program a few more times in order to answer some basic questions about how "strict" the shell is with what you give it.
+Consider the answers to these questions by experimenting and seeing what happens if you try them:
+
+* What happens if you hit space a few times before your `date` command and then hit enter? Does it still run the same?
+* What about if you hit space a few times *after* typing `date` but before hitting enter?
+* How about if you type it in uppercase as `DATE`?
+
+Finally -- a quick word of caution.
+Never run a command that you don't understand!
 You should be running this tutorial from Cloud Shell, meaning regardless of what you do, your local machine is "safe".
 Even if you remove important operating system files (accidentally or intentionally), as long as you are within Cloud Shell, you are not affecting your local machine.
 Nevertheless, make it a habit not to run a command or program unless you understand what it will do first.
@@ -77,10 +86,13 @@ It stands for `Unix` -- yet another family of operating systems which have influ
 But the `uname` here is short for `unix name`, and is sort of asking the computer to tell you "what kind of Unix-like operating system are you?".
 Ours sure enough says Linux.
 
+In truth, the `uname` program *isn't* one you'll likely use often, so you might choose to forget about it now that you've seen it.
+But it's good to know it exists, and even more importantly to be in the mindset of looking for a program that does what you need when you have a question you're trying to answer.
+
 ### Command Line Options
 
 Every program (including the 2 we've just learned) may take zero or more extra *arguments*.
-Think of these again like passing arguments to functions or methods in programming languages you've seen, though the syntax is slightly different.
+Think of these like passing arguments to functions in programming languages you've seen -- though the syntax is slightly different in a shell.
 We'll dive deeper into passing arguments in just a moment, but let's learn about the first *kind* of argument, what are known as "options".
 The `uname` command above told us we were on Linux, but it has more to say about what *version* of Linux we're using, for example.
 
@@ -95,11 +107,11 @@ and you should see `uname` tell you what *version* of Linux this computer runs o
 Here, I see:
 
 ```text
-5.10.133+
+6.1.58+
 ```
 
 telling me this computer is running that specific version of Linux.
-If you head to [the Linux development repository's list of releases](https://github.com/torvalds/linux/tags) you should be able to find that version somewhere in it.
+If you head to [the Linux development repository's list of releases](https://github.com/torvalds/linux/tags) you should be able to find that version somewhere in it, or at least the first two numbers within it.
 You may need to scroll back in time, as Linux is released somewhat often.
 
 What we added was three characters, a space character, followed by the two characters `-r`.
@@ -158,7 +170,7 @@ In Google Cloud Shell, you can scroll up and down the previous *output* with you
 ## `Ctrl-c` to interrupt
 
 Finally, before we go much further, you should be aware of the *Ctrl-c* keyboard shortcut.
-*Ctrl-c* in a shell will send what is known as an *interrupt* or *signal* -- but what this means is often that if you have either a command you want to "cancel", or a long-running program is running and you want it to stop running, you can hit *Ctrl-c* to do so.
+*Ctrl-c* in a shell will send what is known as an *interrupt* or *signal* -- but what this means simply is that if you ever have a program running and preventing you from typing that you want to *stop*, or if you've typed out a command and then decided you don't really want to run it and want to get back to a clean prompt, you can hit *Ctrl-c* to do so.
 We also by convention use the `^` character to represent the `Ctrl` key, so you will see the above shortcut written `^c`, which means to hold down the `Ctrl` key and hit `c`.
 Try it now by typing `date` at the prompt, but instead of hitting enter, hit `Ctrl-c`.
 You should see that your command was *not* run.
@@ -499,7 +511,7 @@ ls alice
 
 where `alice` is again a relative path.
 
-There are three "specially treated" path segments.
+There are also three "specially treated" path segments.
 
 `..` within a path refers to the *parent* directory of a path.
 
