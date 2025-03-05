@@ -107,7 +107,7 @@ and you should see `uname` tell you what *version* of Linux this computer runs o
 Here, I see:
 
 ```text
-6.1.58+
+6.6.72+
 ```
 
 telling me this computer is running that specific version of Linux.
@@ -147,7 +147,7 @@ We can answer that with yet another program:
 lsb_release --all
 ```
 
-which should tell you we're running a version of [Debian](https://www.debian.org/), an extremely popular and reliable Linux distribution.
+which should tell you we're running a version of [Ubuntu](https://ubuntu.com/), an extremely popular and reliable Linux distribution.
 
 The `lsb_release` program is one whose job it is to tell you information about the specific distribution of Linux being run.
 `--all` is a command line option that it takes, which you can imagine simply shows *all* the information it knows.
@@ -291,26 +291,6 @@ echo got: '
 
 and hitting enter.
 You'll see the shell simply waiting for you to type more, and as soon as you type another `'` it should print everything you passed to it, including any extra line breaks.
-
-## `man`
-
-We've already used a small number of programs, like the `echo` program to echo a line of text.
-
-Wouldn't it be nice if there was an instruction manual for programs that told us how to use them?
-There is one of course, and it's another program, one called `man` (for "manual").
-
-`man` is an interactive help program which can tell us about other programs and their usage notes.
-
-It takes an argument -- the name of a program you wish to learn about.
-If we want to learn more about what the `echo` program does, like perhaps whether it takes any additional arguments, type:
-
-Run:
-
-```sh
-man echo
-```
-
-and observe you see a page (or multiple pages) of output telling you how to use `echo`. You can hit `q` to exit what you see in `man`.
 
 ## Even More About Command Line Arguments
 
@@ -618,8 +598,8 @@ A package manager is itself a program whose job it is to *install* or otherwise 
 A *package* is often a program, though it can be something more granular than a program, like perhaps a programming library meant to be used within a larger program.
 So package managers are used to install, uninstall or query for programs and tools we may want to have available.
 
-Recall that we're using a Debian machine (or confirm it for yourself again via `lsb_release -i`).
-The Debian distribution gives you a package manager called `apt`, which stands for *Advanced Package Tool*.
+Recall that we're using a Ubuntu machine (or confirm it for yourself again via `lsb_release -i`).
+The Ubuntu distribution gives you a package manager called `apt`, which stands for *Advanced Package Tool*.
 
 Let's use it to install something we don't have installed already, a program called `ripgrep` which we'll talk about in the next section.
 
@@ -831,6 +811,32 @@ They can be used from Python as well, where the syntax is very similar to what w
 Regular expressions have a reputation for being easily overcomplicated -- meaning it's easy to write an incomprehensible long regular expression which you will have a hard time diagnosing when it doesn't behave as you expect.
 
 If you use them for what they're meant for however -- short, simple but powerful parsing of substrings, especially interactively -- you have an important tool under your belt.
+
+## `man`
+
+Wouldn't it be nice if there was an instruction manual for programs that told us how to use them?
+There is one of course, and it's another program, one called `man` (for "manual").
+
+`man` is an interactive help program which can tell us about other programs and their usage notes.
+
+It takes an argument -- the name of a program you wish to learn about.
+If we want to learn more about the `python` command line program takes, like perhaps whether it takes any additional arguments, type:
+
+```sh
+man python
+```
+
+and observe you see a page (or multiple pages) of output telling you how to use `python`. You can hit `q` to exit what you see in `man`.
+
+Note however that some Google Cloud Shell instances remove the ability to run `man` by default.
+If you see an error message which seems to indicate that's happened, you can run:
+
+```sh
+sudo mv /usr/bin/man.REAL /usr/bin/man && sudo mandb -c
+```
+
+which will restore being able to run `man`.
+(This only applies to Cloud Shell, it should not apply to your local computer.)
 
 ## Some Interactive / Long-Running Programs
 
