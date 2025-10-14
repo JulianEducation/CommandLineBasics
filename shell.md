@@ -588,6 +588,12 @@ rmdir new-directory
 
 will *remove* an empty directory, deleting it.
 
+### Exercise
+
+Now, try combining these commands. Create a new directory called `my-stuff`, copy the `alice/alice.txt` file into it, and then rename the copied file to `book.txt`.
+Finally, use `ls` to verify your work.
+You can clean up by removing the file and then the directory with `rm` and `rmdir`.
+
 ## Package Managers
 
 Thus far, we've made use of a number of programs which it seems are "built in" or at least pre-installed for us on the computers we're using in Cloud Shell.
