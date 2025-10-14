@@ -845,6 +845,33 @@ sudo mv /usr/bin/man.REAL /usr/bin/man && sudo mandb -c
 which will restore being able to run `man`.
 (This only applies to Cloud Shell, it should not apply to your local computer.)
 
+## Counting Words and Generating Sequences
+
+Two other useful commands that are good to know are `wc` and `seq`.
+
+### `wc`
+
+The `wc` program stands for "word count". It can count words, lines, and characters in a file.
+
+Try running it on `alice/alice.txt`:
+
+```sh
+wc alice/alice.txt
+```
+
+The output will show you the number of lines, words, and characters in the file, in that order.
+
+### `seq`
+
+The `seq` program generates a sequence of numbers. For example, to get numbers from 1 to 5, you can run:
+
+```sh
+seq 5
+```
+
+You can also specify a starting number and an increment.
+
+
 ## Some Interactive / Long-Running Programs
 
 Though some of the programs we've seen so far "stay open" when we run them, such as `python3` with no argument, for the most part programs we've run do a job and then exit.
