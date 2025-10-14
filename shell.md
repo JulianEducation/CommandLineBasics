@@ -946,15 +946,15 @@ Or at least an example of one simple enough to run within your shell.
 
 Install it (with [a package manager](#package-managers) as shown earlier -- its package is called simply `w3m`) and have a look at its `man` page to see how to use it.
 
-### Definitely Not Silly: youtube-dl
+### Definitely Not Silly: yt-dlp
 
-If you've ever had a video you wish you could save offline for a long flight or commute, a terminal program that certainly will be useful to you is `youtube-dl`, which makes doing so trivial.
+If you've ever had a video you wish you could save offline for a long flight or commute, a terminal program that certainly will be useful to you is `yt-dlp`, which makes doing so trivial.
 
 Fumble for a moment with trying to figure out how to do so with the YouTube website, before simply trying:
 
 ```sh
-sudo apt install youtube-dl
-youtube-dl '<any video>'
+sudo apt install yt-dlp
+yt-dlp '<any video>'
 ```
 
 and seeing how easy that was to do.
@@ -996,7 +996,7 @@ Here's a unified list you might use to continue investigating them and others:
   * `w3m`
   * `wc`
   * `whoami`
-  * `youtube-dl`
+  * `yt-dlp`
 
 ## Things We Didn't Cover
 
