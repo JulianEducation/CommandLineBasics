@@ -460,6 +460,64 @@ Exit codes are what make this work: `&&` and `||` do nothing more than look at t
 `&&` in particular is extremely common, because it lets you write "do this, and then if it worked, do that" without having to sit and watch the first command to see whether it succeeded.
 You'll see it again later in this tutorial.
 
+## Environment Variables
+
+`$?` is a special case of something more general.
+Your shell keeps a collection of named values called *environment variables*, and just like with `$?`, you can see one by putting a `$` in front of its name.
+
+Try:
+
+```sh
+echo $HOME
+```
+
+which shows you the path to your *home directory* (something we'll talk more about shortly), and:
+
+```sh
+echo $USER
+```
+
+which shows you the name of the user you're logged in as.
+
+Where did these come from?
+They were set up for you when you logged in, and they're called *environment* variables because they're part of the environment every program you run inherits -- any program can look at them, and many use them to decide how to behave.
+You can see the full list with a program called `env`:
+
+```sh
+env
+```
+
+Don't worry about what most of them mean.
+One worth noticing though is `PATH`, which is a list of directories (separated by `:`) that the shell looks through, in order, whenever you type the name of a program.
+That's how the shell turns `date` into an actual file on disk to run -- and it's why you saw "command not found" earlier: the shell searched every directory in `PATH` and came up empty.
+
+You can create your own variable by writing a name, an `=`, and a value, with *no spaces* on either side of the `=`:
+
+```sh
+GREETING=hello
+echo $GREETING
+```
+
+A variable created this way is only visible to your shell itself.
+To make it part of the environment, so that programs you run can see it too, you `export` it:
+
+```sh
+export GREETING
+python3 -c 'import os; print(os.environ["GREETING"])'
+```
+
+Finally, there's one last thing to know about quotes, now that we've seen `$`.
+Compare:
+
+```sh
+echo '$HOME'
+echo "$HOME"
+```
+
+Single quotes tell the shell to pass along *exactly* what's inside them, `$` and all.
+Double quotes still keep everything inside them together as one argument, but they let the shell replace variables with their values first.
+So when you want spaces preserved *and* a variable filled in, use double quotes.
+
 ## Files & Directories
 
 You likely have had some previous exposure to interacting with directories or files on your computer from a programming language like Python (if you haven't don't worry, keep reading).
@@ -955,6 +1013,47 @@ seq 5
 
 You can also specify a starting number and an increment -- `seq 10 2 20` will count from 10 to 20 in steps of 2.
 
+## Pipes
+
+Nearly every program we've run prints its output to the screen.
+But the screen is just the *default* place for output to go -- and the shell lets us redirect it somewhere far more interesting: into the *input* of another program.
+
+This is done with the `|` character, called a *pipe*, and it's the single most powerful idea in this tutorial.
+
+Here's a first example:
+
+```sh
+seq 1000 | wc -l
+```
+
+`seq` generates a thousand numbers, but instead of scrolling past on the screen, they're sent straight into `wc`, which counts them and reports `1000`.
+Notice that `wc` was given no file to read -- when a program like `wc` isn't given a file, it reads whatever is sent into it instead.
+
+Many of the programs we've seen behave this way, including `head`, `tail`, `rg` and `less`.
+So we can ask questions like "how many lines of the book mention Alice?":
+
+```sh
+rg -i alice alice/alice.txt | wc -l
+```
+
+or "what are the last 3 numbers below 1000 which contain a 7?":
+
+```sh
+seq 1000 | rg 7 | tail -3
+```
+
+That last example chains *three* programs together, and there's no limit to how many you can join -- the output of each flows into the next.
+A command line like this is called a *pipeline*.
+
+Pipes are why shell programs tend to be so small and single-purpose: `seq` only counts, `rg` only filters, and `wc` only tallies, but joined together they can answer questions none of them could alone.
+Almost any time you find yourself thinking "I want to take the output of *this* and then do *that* to it", a pipe is the answer.
+
+### Exercise
+
+Using a pipe, find how many *chapters* the book has.
+(Hint: how did we find the lines which mention chapters earlier? If your first answer seems too high, remember that the book has a table of contents, and think about anchors.)
+Then see if you can count how many lines in the book *begin* with the word "Alice".
+
 ## Some Interactive / Long-Running Programs
 
 Though some of the programs we've seen so far "stay open" when we run them, such as `python3` with no argument, for the most part programs we've run do a job and then exit.
@@ -1057,6 +1156,7 @@ Here's a unified list you might use to continue investigating them and others:
   * `curl`
   * `date`
   * `echo`
+  * `env`
   * `exit`
   * `false`
   * `head`
@@ -1092,18 +1192,17 @@ We covered a lot about shells in this tutorial, but we really have only scratche
 Here's a list of topics we *didn't* cover, which you should be able to use to find further tutorials or resources:
 
   * `;`, which like `&&` and `||` combines two command lines, but runs the second one regardless of the exit code of the first.
-  * Environment variables. `man bash` and `man env` may be good starts for this one.
-    You'll also want to learn about double quotes (`""`) and how they differ from single quotes in a shell.
-  * `stdin`, `stdout` and `stderr` of any program you run, and how they relate to the `>` and `2>` redirections in a shell.
+  * More about environment variables and shell variables, such as how to *remove* one, or how to run a single program with a variable set just for it.
+    `man bash` and `man env` may be good starts for this one.
+  * `stdin`, `stdout` and `stderr` -- the proper names for the input and output we connected with pipes -- and how the `>` and `2>` redirections let you send output into a *file* rather than another program.
     `man bash` is again a good place to start for the latter.
   * glob patterns, which you can use, sort of like "faster" or more ergonomic regular expressions (though with much less functionality).
     They're extremely widely used at a shell for filtering files or directories.
     `man bash` is again a first place to look for these
   * Job control, for running multiple programs at the same "time" in a single shell.
     Look at `fg` and `bg` again in `man bash`.
-  * Shell pipes and pipelines with `|`, which you can use to *send and receive* things from one program to another.
-    This is itself an amazing and deep topic which touches on composing all of the programs we've learned about with each other.
-    `man bash` yet again will teach you the basic syntax, but you'll find countless tutorials on how to assemble shell pipelines.
+  * Longer pipelines, and the programs which shine within them, like `sort`, `uniq`, `cut` and `tr`.
+    We only scratched the surface of pipes, and you'll find countless tutorials on how to assemble them.
 
 ## Additional Resources
 
