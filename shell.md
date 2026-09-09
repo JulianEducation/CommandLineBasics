@@ -386,6 +386,80 @@ for more information on what the `python3` program can do.
 Don't be overwhelmed if a lot of what you see is incomprehensible.
 Try to understand the parts which use concepts you're already familiar with.
 
+## Exit Codes
+
+Every program we've run so far has *exited* -- either quickly, like `date`, or when we told it to, like `python3`.
+When a program exits, it leaves behind one small piece of information: a number called its *exit code* (or *exit status*).
+
+By convention, an exit code of `0` means "everything went fine", and any other number means "something went wrong".
+Which non-zero number a program uses, and what it means, differs from program to program, but you'll usually just care about whether it was `0` or not.
+
+The shell remembers the exit code of the most recent program it ran and stores it in something like a variable called `$?`, which we then can `echo` to see:
+
+```sh
+date
+echo $?
+```
+
+You should see `0`, since `date` had no trouble.
+
+Now try a command that fails:
+
+```sh
+a-program-which-does-not-exist
+echo $?
+```
+
+This time the shell reports `127`, its own special exit code for "I couldn't find that program".
+
+Programs decide their own exit codes.
+Python, for instance, exits with `1` when the code it's running raises an exception:
+
+```sh
+python3 -c 'raise ValueError("uh oh")'
+echo $?
+```
+
+Note that `$?` always refers to the *most recent* program -- so running `echo $?` a second time in a row will show you `0`, the exit code of the previous `echo`, not the one you were curious about.
+
+There are two tiny programs which exist purely to produce a particular exit code: `true`, which does nothing and exits with `0`, and `false`, which does nothing and exits with `1`.
+Try them with `echo $?` to confirm.
+
+You'll rarely look at exit codes directly the way we just have.
+Their real purpose is to let the shell *make decisions* about what to run next, which is what we'll see now.
+
+## Combining Commands With `&&` and `||`
+
+The shell lets us write two commands on a single line, joined by `&&` (pronounced "and").
+The second command runs *only if* the first one succeeds -- meaning, exits with code `0`:
+
+```sh
+sleep 2 && echo 'finished sleeping'
+```
+
+Here `echo` runs only once `sleep` has successfully finished, and you'll see the message after a 2 second delay.
+Now compare:
+
+```sh
+false && echo 'you will not see this'
+```
+
+where the shell never bothers to run `echo` at all, because `false` failed.
+
+`||` (pronounced "or") is the opposite -- the second command runs *only if* the first one fails:
+
+```sh
+a-program-which-does-not-exist || echo 'that did not work'
+```
+
+The shell tries the first command, sees it exit with a non-zero code, and so runs the `echo`.
+Try replacing the non-existent program with `date` and confirm that this time, the `echo` is skipped.
+
+Exit codes are what make this work: `&&` and `||` do nothing more than look at the exit code of the command on their left to decide whether to run the command on their right.
+
+`&&` in particular is extremely common, because it lets you write "do this, and then if it worked, do that" without having to sit and watch the first command to see whether it succeeded.
+You'll see it again later in this tutorial.
+
 ## Files & Directories
 
 You likely have had some previous exposure to interacting with directories or files on your computer from a programming language like Python (if you haven't don't worry, keep reading).
@@ -850,7 +924,7 @@ sudo mv /usr/bin/man.REAL /usr/bin/man && sudo mandb -c
 ```
 
 which will restore being able to run `man`.
-(The `&&` here simply runs the second command after the first one succeeds -- we'll mention it again at the end of the tutorial.)
+(Recall that `&&` runs the second command only once the first one has succeeded.)
 If `man` runs but tells you there is no manual entry for a program, the manual pages themselves have been removed too, and running `sudo unminimize` should restore them.
 (This only applies to Cloud Shell, it should not apply to your local computer.)
 
@@ -984,6 +1058,7 @@ Here's a unified list you might use to continue investigating them and others:
   * `date`
   * `echo`
   * `exit`
+  * `false`
   * `head`
   * `less`
   * `ls`
@@ -1002,6 +1077,7 @@ Here's a unified list you might use to continue investigating them and others:
   * `sudo`
   * `tail`
   * `top`
+  * `true`
   * `uname`
   * `vim`
   * `w3m`
@@ -1015,8 +1091,7 @@ We covered a lot about shells in this tutorial, but we really have only scratche
 
 Here's a list of topics we *didn't* cover, which you should be able to use to find further tutorials or resources:
 
-  * The `&&` and `||` operators, which you can use to *combine* multiple command lines together.
-    Check out `man bash` for details on how to use them.
+  * `;`, which like `&&` and `||` combines two command lines, but runs the second one regardless of the exit code of the first.
   * Environment variables. `man bash` and `man env` may be good starts for this one.
     You'll also want to learn about double quotes (`""`) and how they differ from single quotes in a shell.
   * `stdin`, `stdout` and `stderr` of any program you run, and how they relate to the `>` and `2>` redirections in a shell.
