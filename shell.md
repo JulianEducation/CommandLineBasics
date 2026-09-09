@@ -14,7 +14,7 @@ Running a browser is an extremely common graphical example – you're likely si
 Interacting with a graphical program often means clicking buttons, using the mouse heavily and interacting with menus, graphics or icons.
 There are great reasons why this is the primary way most people use a computer -- for the vast majority of "normal use", they are easier to understand and learn.
 
-A shell is another *textual* interface for running programs, often interactively (meaning whilst continuing to give them input and see their output).
+A shell is a *textual* interface for running programs, often interactively (meaning whilst continuing to give them input and see their output).
 You can think of it as an interactive environment for running programs, much like a Python interpreter is an interactive environment for running Python code.
 Instead of calling functions, you'll be running entire programs.
 
@@ -24,7 +24,7 @@ Their interface is instead more primitive -- it's simple text -- but also powerf
 
 ## Running a program
 
-You should by now be looking at this tutorial alongside a shell -- one running on a Linux computer which we've connected through via your browser in something called Google Cloud Shell, which is a free remote machine that Google exposes to anyone with an account (up to 50 hours per month).
+You should by now be looking at this tutorial alongside a shell -- one running on a Linux computer which we've connected through via your browser in something called Google Cloud Shell, which is a free remote machine that Google exposes to anyone with an account (up to 50 hours per week).
 If you don't see a screen with some text on it (the shell), make sure you have followed the link in the README of [this repository](https://github.com/JulianEducation/CommandLineBasics).
 
 Think about what's happening here -- you have your local computer (a laptop, tablet or similar) which is showing you an interface being exposed by a second computer far away from yours.
@@ -310,14 +310,13 @@ python3
 
 At the interpreter you can interactively write any Python code you know.
 
-You can exit the interpreter by typing `exit()` or hitting `^d` (remember that
-`^` is shorthand for the Control key).
+You can exit the interpreter by typing `exit()` or hitting `^d` (remember that `^` is shorthand for the Control key).
 If you do so you should be back at a shell prompt.
 
 ### Positional arguments
 
-We've used positional arguments above with `echo` and `man`.
-They don't begin with dashes (`-`), and can be either required (as is the case with `man`) or optional.
+We've used positional arguments above with `echo` and `sleep`.
+They don't begin with dashes (`-`), and can be either required (as is the case with `sleep`) or optional.
 
 There is a Python file in this directory.
 You can run it via:
@@ -332,7 +331,7 @@ When Python is given this one argument, instead of opening a REPL, it executes t
 
 ### Short options
 
-If we look at `man python3`, we'll see one of the arguments it takes is one that looks like:
+If we look at the documentation for `python3` (which we'll see how to find later on, via a program called `man`), we'll see one of the arguments it takes is one that looks like:
 
 ```terminal
   -c command
@@ -347,7 +346,7 @@ python3 -c 'print("Hello from Python")'
 
 where we've given `python3` 2 additional arguments -- one, `-c`, and then an additional argument (which `-c` "consumes") containing a piece of Python code to run *instead* of opening the REPL.
 
-You'll notice that we've placed the last command line output inside single quotes -- remember, the reason we do so is because we wish to pass the entire contents of the quotes as one single argument to `python3`.
+You'll notice that we've placed the last command line argument inside single quotes -- remember, the reason we do so is because we wish to pass the entire contents of the quotes as one single argument to `python3`.
 
 Arguments that consist of a single hyphen followed by a single letter, such as `-c` in this case are common to many programs, like `uname -r` which we saw at the outset.
 
@@ -365,8 +364,8 @@ echo -e -n hello
 
 ### Long options
 
-A second kind of argument are longer options, which often start with two hyphens, and which generally are named with full words rather than single letters.
-Again from `man python3` we see `--version` is an argument which shows information about the Python version:
+A third kind of argument are longer options, which often start with two hyphens, and which generally are named with full words rather than single letters.
+Again from `python3`'s documentation we see `--version` is an argument which shows information about the Python version:
 
 ```sh
 python3 --version
@@ -380,7 +379,7 @@ Options like `--version` and `--help` are common across many programs, so you of
 Have a further look at
 
 ```sh
-man python3
+python3 --help
 ```
 
 for more information on what the `python3` program can do.
@@ -469,7 +468,7 @@ We'll keep discussing paths, but tab completion should be something quite useful
 
 ### Relative and Absolute Paths
 
-We have briefly discussed that a *path* is a string of characters which represents a location on a computer.
+A *path* is a string of characters which represents a location on a computer.
 
 `/tmp` is an example of a path we referenced above, where the root directory `/` contains a subdirectory named `tmp`, which we entered via `cd`.
 
@@ -574,6 +573,13 @@ cp alice/alice.txt 'alice/alice in wonderland.txt'
 Use `ls` and `cat` to confirm that we now have two copies of the same file.
 
 Other programs to be aware of (and try out) are `mv`, which moves files to a given second path, and `rm` which *deletes* files.
+Let's use `rm` now to delete the copy we just made, so that we're back to having a single copy of the book (which we'll rely on later):
+
+```sh
+rm 'alice/alice in wonderland.txt'
+```
+
+Be careful with `rm` -- there is no trash can or recycle bin at a shell, so a deleted file is gone.
 
 ```sh
 mkdir new-directory
@@ -641,7 +647,7 @@ You can see what this user is called by running the `whoami` program:
 
 ```sh
 whoami
-````
+```
 
 I see my UNI:
 
@@ -716,6 +722,7 @@ Much of their power comes from using some special syntax which allows us to find
 ### Anchors
 
 The `^` character in a regular expression is an *anchor* -- it matches at the *beginning* of a line.
+(Don't confuse this with our use of `^` in the context of keyboard shortcuts to stand for `Ctrl`).
 
 So the regular expression `^Alice` means "match the word Alice, but only at the beginning of a line".
 Pass this regular expression to rg, and notice that now we get lines that contain "Alice", but only when it is the first word on the line.
@@ -827,13 +834,13 @@ There is one of course, and it's another program, one called `man` (for "manual"
 `man` is an interactive help program which can tell us about other programs and their usage notes.
 
 It takes an argument -- the name of a program you wish to learn about.
-If we want to learn more about the `python` command line program takes, like perhaps whether it takes any additional arguments, type:
+If we want to learn more about the `python3` command line program, like perhaps what other arguments it takes, type:
 
 ```sh
-man python
+man python3
 ```
 
-and observe you see a page (or multiple pages) of output telling you how to use `python`. You can hit `q` to exit what you see in `man`.
+and observe you see a page (or multiple pages) of output telling you how to use `python3`. You can hit `q` to exit what you see in `man`.
 
 Note however that some Google Cloud Shell instances remove the ability to run `man` by default.
 If you see an error message which seems to indicate that's happened, you can run:
@@ -843,6 +850,8 @@ sudo mv /usr/bin/man.REAL /usr/bin/man && sudo mandb -c
 ```
 
 which will restore being able to run `man`.
+(The `&&` here simply runs the second command after the first one succeeds -- we'll mention it again at the end of the tutorial.)
+If `man` runs but tells you there is no manual entry for a program, the manual pages themselves have been removed too, and running `sudo unminimize` should restore them.
 (This only applies to Cloud Shell, it should not apply to your local computer.)
 
 ## Counting Words and Generating Sequences
@@ -851,7 +860,7 @@ Two other useful commands that are good to know are `wc` and `seq`.
 
 ### `wc`
 
-The `wc` program stands for "word count". It can count words, lines, and characters in a file.
+The `wc` program stands for "word count". It can count lines, words, and bytes in a file.
 
 Try running it on `alice/alice.txt`:
 
@@ -859,7 +868,8 @@ Try running it on `alice/alice.txt`:
 wc alice/alice.txt
 ```
 
-The output will show you the number of lines, words, and characters in the file, in that order.
+The output will show you the number of lines, words, and bytes in the file, in that order.
+(Bytes, not characters -- our book contains some characters like curly quotes which take up more than one byte each, so the two differ. `wc -m` will count characters instead.)
 
 ### `seq`
 
@@ -869,8 +879,7 @@ The `seq` program generates a sequence of numbers. For example, to get numbers f
 seq 5
 ```
 
-You can also specify a starting number and an increment.
-
+You can also specify a starting number and an increment -- `seq 10 2 20` will count from 10 to 20 in steps of 2.
 
 ## Some Interactive / Long-Running Programs
 
@@ -887,6 +896,7 @@ top
 ```
 
 will show us information about many of these programs, most of which we have not covered.
+Hit `q` to exit.
 
 ### `less`
 
@@ -917,7 +927,7 @@ Follow the instructions at the bottom of nano to exit, remembering that `^` mean
 `vim` is a text editor that is hugely powerful, and likely different from any other program you've used previously.
 It would take a whole lecture or more to talk about `vim` itself, but for now you can notice that similar to `nano`, if you open our text file with it you can browse around with the arrow keys.
 If however you try to insert some text by typing some letters, `vim` likely won't do what you're expecting.
-Hit `Esc` a few times, then `:q` -- that's the colon key followed by the letter `q`, and then hit enter to quit `vim`.
+Hit `Esc` a few times, then `:q!` -- that's the colon key followed by the letter `q` and an exclamation point -- and then hit enter to quit `vim`.
 
 ## `curl` and `cheat.sh`
 
@@ -958,6 +968,7 @@ yt-dlp '<any video>'
 ```
 
 and seeing how easy that was to do.
+(One caveat: YouTube changes often, and the version of `yt-dlp` that `apt` installs can lag behind by months, so if you see an error, you'd be better off running `uvx yt-dlp` outside of this tutorial which uses the `uv` package manager for Python to run the latest version.)
 
 ## Summary
 
